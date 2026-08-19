@@ -42,9 +42,6 @@
         #viewport-wrapper { position: relative; margin-top: 80px; min-height: calc(100vh - 80px); }
         #page-perfil { padding-top: 20px; }
         
-        .mode-mobile { max-width: 375px !important; box-shadow: 0 0 0 12px #2C2C2C, 0 0 0 15px #444, 0 40px 100px rgba(0,0,0,0.4); border-radius: 40px; margin: 40px auto !important; height: 667px !important; min-height: auto !important; overflow: hidden !important; }
-        .mode-mobile #scaler { transform: scale(0.7); transform-origin: top center; width: 142.8%; }
-
         .nav-link { position: relative; color: #2C2C2C; font-weight: 800; font-size: 1rem; transition: all 0.3s ease; cursor: pointer; }
         .nav-link:hover { color: #FF6B35; }
         .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 3px; background: #9D4EDD; transition: width 0.3s ease; }
@@ -105,16 +102,24 @@
                 <div class="w-9 h-9 bg-charcoal rounded-xl flex items-center justify-center text-white font-black italic text-sm">LB</div>
                 <span class="text-xl font-extrabold tracking-tighter">Luana Bessa</span>
             </div>
+            <!-- Navegação Desktop -->
             <nav class="hidden lg:flex gap-10">
                 <button onclick="switchTab('perfil')" id="nav-perfil" class="nav-link py-1 active uppercase tracking-widest">Perfil</button>
                 <button onclick="switchTab('cases')" id="nav-cases" class="nav-link py-1 uppercase tracking-widest">Cases</button>
                 <button onclick="switchTab('curriculo')" id="nav-curriculo" class="nav-link py-1 uppercase tracking-widest">Currículo</button>
                 <button onclick="switchTab('galeria')" id="nav-galeria" class="nav-link py-1 uppercase tracking-widest">Galeria</button>
             </nav>
-            <div class="flex items-center bg-gray-100 p-1 rounded-xl border border-gray-200">
-                <button onclick="setViewport('desktop')" id="vp-desktop" class="px-3 py-1.5 rounded-lg text-[9px] font-black bg-white shadow-sm transition-all">DESKTOP</button>
-                <button onclick="setViewport('mobile')" id="vp-mobile" class="px-3 py-1.5 rounded-lg text-[9px] font-black text-gray-400 hover:text-charcoal transition-all ml-1">CELULAR</button>
-            </div>
+            <!-- Botão do Menu Hambúrguer (Mobile) -->
+            <button onclick="toggleMobileMenu()" class="lg:hidden text-charcoal text-2xl p-2 focus:outline-none">
+                <i class="fa-solid fa-bars" id="mobile-menu-icon"></i>
+            </button>
+        </div>
+        <!-- Menu Dropdown Mobile -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-gray-100 px-6 py-4 shadow-xl absolute top-20 left-0 w-full flex flex-col gap-3">
+            <button onclick="switchTabMobile('perfil')" class="text-left font-extrabold text-sm uppercase tracking-widest py-2.5 px-3 rounded-xl hover:bg-gray-50 text-charcoal">Perfil</button>
+            <button onclick="switchTabMobile('cases')" class="text-left font-extrabold text-sm uppercase tracking-widest py-2.5 px-3 rounded-xl hover:bg-gray-50 text-charcoal">Cases</button>
+            <button onclick="switchTabMobile('curriculo')" class="text-left font-extrabold text-sm uppercase tracking-widest py-2.5 px-3 rounded-xl hover:bg-gray-50 text-charcoal">Currículo</button>
+            <button onclick="switchTabMobile('galeria')" class="text-left font-extrabold text-sm uppercase tracking-widest py-2.5 px-3 rounded-xl hover:bg-gray-50 text-charcoal">Galeria</button>
         </div>
     </header>
 
@@ -203,9 +208,8 @@
                         </p>
                     </div>
 
-                    <!-- GRID DE PREVIEW DOS PILARES (COM BORDAS ANIMADAS & VISUAL SÊNIOR) -->
+                    <!-- GRID DE PREVIEW DOS PILARES -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-6 border-t border-gray-100">
-                        <!-- Card Preview 1: Trade Marketing -->
                         <div class="animated-card" style="--border-color: #FF6B35;">
                             <div class="card-inner p-5 flex flex-col justify-between items-start">
                                 <div class="w-9 h-9 bg-orange-50 rounded-xl flex items-center justify-center text-vibrantOrange text-sm mb-3 border border-orange-100">
@@ -217,8 +221,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Card Preview 2: Atendimento & Relacionamento -->
                         <div class="animated-card" style="--border-color: #3b82f6;">
                             <div class="card-inner p-5 flex flex-col justify-between items-start">
                                 <div class="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center text-brandBlue text-sm mb-3 border border-blue-100">
@@ -230,8 +232,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Card Preview 3: Prevenção a Fraudes -->
                         <div class="animated-card" style="--border-color: #9D4EDD;">
                             <div class="card-inner p-5 flex flex-col justify-between items-start">
                                 <div class="w-9 h-9 bg-purple-50 rounded-xl flex items-center justify-center text-softLilac text-sm mb-3 border border-purple-100">
@@ -243,8 +243,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Card Preview 4: Cobrança Multicanal -->
                         <div class="animated-card" style="--border-color: #2C2C2C;">
                             <div class="card-inner p-5 flex flex-col justify-between items-start">
                                 <div class="w-9 h-9 bg-gray-100 rounded-xl flex items-center justify-center text-charcoal text-sm mb-3 border border-gray-200">
@@ -342,7 +340,6 @@
                         </div>
                     </div>
 
-                    <!-- SUBSEÇÕES TRADE -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-gray-100">
                         <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 space-y-2">
                             <h5 class="text-xs font-black uppercase text-charcoal flex items-center gap-2"><i class="fa-solid fa-chess-knight text-vibrantOrange"></i> Da Estratégia à Execução</h5>
@@ -384,7 +381,6 @@
                         Minha atuação na <b>ML Gomes Advogados</b> aconteceu em um ambiente de alta complexidade operacional, dentro de uma empresa reconhecida pela atuação especializada em recuperação de crédito e cobrança. Como Analista de Treinamento, atuei no desenvolvimento de profissionais responsáveis por differentes etapas e perfis de cobrança, conectando capacitação, processos, comportamento e indicadores de performance.
                     </p>
 
-                    <!-- DIMENSÃO DA OPERAÇÃO COBRANÇA -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 bg-gray-50 p-6 rounded-2xl border border-gray-100">
                         <div>
                             <span class="block text-xs font-black text-charcoal uppercase mb-1">Múltiplas Carteiras</span>
@@ -404,12 +400,11 @@
                         </div>
                     </div>
 
-                    <!-- CARTEIRAS E PARCEIROS -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <div class="bg-purple-50/50 p-6 rounded-2xl border border-purple-100 space-y-4">
                             <h4 class="text-xs font-black text-softLilac uppercase tracking-widest"><i class="fa-solid fa-building-columns mr-1"></i> Ecossistema Diversificado de Cobrança</h4>
                             <p class="text-xs font-medium text-gray-600 leading-relaxed">
-                                Atuei em operações que envolviam differentes carteiras, produtos financeiros e perfis de clientes. Entre as principais carteiras e empresas atendidas estavam:
+                                Atuei in operações que envolviam differentes carteiras, produtos financeiros e perfis de clientes. Entre as principais carteiras e empresas atendidas estavam:
                             </p>
                             <div class="flex flex-wrap gap-2">
                                 <span class="bg-white px-2.5 py-1 rounded-md text-[11px] font-bold shadow-xs border border-purple-200">Bradesco</span>
@@ -441,7 +436,6 @@
                         </div>
                     </div>
 
-                    <!-- DESENVOLVIMENTO DE QUEM NEGOCIA -->
                     <div class="space-y-4 pt-2">
                         <h4 class="text-xs font-black text-charcoal uppercase tracking-widest border-l-4 border-softLilac pl-3">Desenvolvimento de Quem Negocia & Resultados</h4>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -480,7 +474,6 @@
                         Minha atuação na <b>Concentrix</b>, dedicada à operação do <b>C6 Bank</b>, aconteceu em um ambiente de alta responsabilidade operacional, no qual treinamento, qualidade e performance precisavam caminhar juntos. Atuei no desenvolvimento de colaboradores desde o onboarding até o acompanhamento contínuo na operação.
                     </p>
 
-                    <!-- DIMENSÃO DA OPERAÇÃO BANCÁRIA -->
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-blue-50/60 p-6 rounded-2xl border border-blue-100 text-center sm:text-left">
                         <div>
                             <span class="block text-xs font-black text-camilBlue uppercase mb-1">C6 Bank</span>
@@ -500,7 +493,6 @@
                         </div>
                     </div>
 
-                    <!-- DETALHES DE ATUAÇÃO BANCÁRIA -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
                         <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 space-y-2">
                             <h5 class="text-xs font-black uppercase text-charcoal flex items-center gap-2"><i class="fa-solid fa-people-group text-brandBlue"></i> Do Onboarding à Operação</h5>
@@ -542,7 +534,6 @@
                         Minha trajetória na <b>Concentrix</b>, em operação dedicada ao <b>C6 Bank</b>, começou na área de Prevenção a Fraudes, atuando diretamente na análise de operações financeiras, identificação de comportamentos atípicos e aplicação de protocolos de segurança. Essa experiência me proporcionou uma visão aprofundada sobre risco transacional, proteção financeira, processos bancários e tomada de decisão em cenários sensíveis.
                     </p>
 
-                    <!-- DIMENSÃO DA OPERAÇÃO FRAUDES -->
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-gray-100 p-6 rounded-2xl border border-gray-200 text-center sm:text-left">
                         <div>
                             <span class="block text-xs font-black text-charcoal uppercase mb-1">C6 Bank</span>
@@ -562,7 +553,6 @@
                         </div>
                     </div>
 
-                    <!-- DETALHES FRAUDES -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="space-y-4">
                             <h4 class="text-xs font-black text-charcoal uppercase tracking-widest border-l-4 border-charcoal pl-3">Análise, Investigação & Decisão</h4>
@@ -593,8 +583,7 @@
 
             <!-- ABA CASES -->
             <section id="page-cases" class="page-content p-0 lg:p-0">
-                <!-- Menu Fixo de Contato -->
-                <div class="sticky top-[80px] z-[40] bg-white border-b border-gray-100 shadow-sm px-10 py-5">
+                <div class="sticky top-[80px] z-[40] bg-white border-b border-gray-100 shadow-sm px-6 lg:px-10 py-5">
                     <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-6">
                         <div>
                             <h2 class="text-2xl font-black tracking-tighter uppercase leading-tight">Luana Bessa</h2>
@@ -646,10 +635,41 @@
                         </p>
                     </div>
 
-                    <!-- LINHA 1: IMPLANTAÇÃO DIGITAL & PLATAFORMA LMS (7) + WORKSHOP DE LIDERANÇAS CAMIL (5) -->
+                    <!-- LINHA 1 -->
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
-                        
-                        <!-- CARD IMPLANTAÇÃO DIGITAL / PLATAFORMA LMS -->
+                        <div class="lg:col-span-5 bg-camilIce border border-blue-100 rounded-[2rem] p-6 lg:p-8 shadow-md flex flex-col justify-between relative overflow-hidden group">
+                            <div class="absolute top-0 right-0 w-48 h-48 bg-blue-100/50 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none"></div>
+                            <div class="relative z-10">
+                                <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-camilBlue text-lg mb-4 shadow-sm border border-blue-100">
+                                    <i class="fa-solid fa-ranking-star"></i>
+                                </div>
+                                <span class="text-[9px] font-black text-camilBlue uppercase tracking-widest">Identidade Visual & Evento</span>
+                                <h3 class="text-2xl sm:text-3xl font-black uppercase tracking-tighter text-charcoal mt-2 mb-3 leading-[1.0]">
+                                    Workshop de Lideranças Camil
+                                </h3>
+                                <p class="text-xs sm:text-sm font-medium text-gray-600 leading-relaxed mb-5">
+                                    Desenvolvimento de ponta a ponta da <b>identidade visual e produção audiovisual</b> para um grande evento corporativo de 3 dias.
+                                </p>
+                                <div class="space-y-2.5">
+                                    <div class="bg-white/90 border border-blue-100 rounded-xl p-3.5 flex items-center gap-3 shadow-xs">
+                                        <i class="fa-solid fa-palette text-camilBlue text-base"></i>
+                                        <div>
+                                            <h5 class="text-[10px] font-black text-charcoal uppercase tracking-wider">Identidade Completa</h5>
+                                            <p class="text-[10px] text-gray-500 font-medium">KV, Convites, Credenciais, Save the Date.</p>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white/90 border border-blue-100 rounded-xl p-3.5 flex items-center gap-3 shadow-xs">
+                                        <i class="fa-solid fa-video text-camilBlue text-base"></i>
+                                        <div>
+                                            <h5 class="text-[10px] font-black text-charcoal uppercase tracking-wider">Audiovisual Emocional</h5>
+                                            <p class="text-[10px] text-gray-500 font-medium">Vídeos de Boas-Vindas e Arquivo Confidencial.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button onclick="openCaseInfo('workshop_liderancas')" class="w-full mt-8 bg-camilBlue text-white rounded-xl py-3 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-blue-700 transition-all relative z-10 shadow-sm">Explorar Case</button>
+                        </div>
+
                         <div class="lg:col-span-7 bg-white rounded-[2rem] p-6 lg:p-8 case-shadow border border-gray-100 relative overflow-hidden flex flex-col justify-between">
                             <div class="absolute top-6 right-6 text-softLilac text-5xl opacity-40"><i class="fa-solid fa-desktop"></i></div>
                             <div>
@@ -690,131 +710,158 @@
                             </div>
                             <button onclick="openCaseInfo('lms')" class="w-full mt-6 border-2 border-charcoal text-charcoal rounded-xl py-3 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-charcoal hover:text-white transition-all">Ver Detalhes do Projeto <i class="fa-solid fa-arrow-right ml-2"></i></button>
                         </div>
-
-                        <!-- CARD WORKSHOP DE LIDERANÇAS CAMIL -->
-                        <div class="lg:col-span-5 bg-camilIce border border-blue-100 rounded-[2rem] p-6 lg:p-8 shadow-md flex flex-col justify-between relative overflow-hidden group">
-                            <div class="absolute top-0 right-0 w-48 h-48 bg-blue-100/50 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none"></div>
-                            <div class="relative z-10">
-                                <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-camilBlue text-lg mb-4 shadow-sm border border-blue-100">
-                                    <i class="fa-solid fa-ranking-star"></i>
-                                </div>
-                                <span class="text-[9px] font-black text-camilBlue uppercase tracking-widest">Identidade Visual & Evento</span>
-                                <h3 class="text-2xl sm:text-3xl font-black uppercase tracking-tighter text-charcoal mt-2 mb-3 leading-[1.0]">
-                                    Workshop de Lideranças Camil
-                                </h3>
-                                <p class="text-xs sm:text-sm font-medium text-gray-600 leading-relaxed mb-5">
-                                    Desenvolvimento de ponta a ponta da <b>identidade visual e produção audiovisual</b> para um grande evento corporativo de 3 dias.
-                                </p>
-                                <div class="space-y-2.5">
-                                    <div class="bg-white/90 border border-blue-100 rounded-xl p-3.5 flex items-center gap-3 shadow-xs">
-                                        <i class="fa-solid fa-palette text-camilBlue text-base"></i>
-                                        <div>
-                                            <h5 class="text-[10px] font-black text-charcoal uppercase tracking-wider">Identidade Completa</h5>
-                                            <p class="text-[10px] text-gray-500 font-medium">KV, Convites, Credenciais, Save the Date.</p>
-                                        </div>
-                                    </div>
-                                    <div class="bg-white/90 border border-blue-100 rounded-xl p-3.5 flex items-center gap-3 shadow-xs">
-                                        <i class="fa-solid fa-video text-camilBlue text-base"></i>
-                                        <div>
-                                            <h5 class="text-[10px] font-black text-charcoal uppercase tracking-wider">Audiovisual Emocional</h5>
-                                            <p class="text-[10px] text-gray-500 font-medium">Vídeos de Boas-Vindas e Arquivo Confidencial.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button onclick="openCaseInfo('workshop_liderancas')" class="w-full mt-8 bg-camilBlue text-white rounded-xl py-3 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-blue-700 transition-all relative z-10 shadow-sm">Explorar Case</button>
-                        </div>
                     </div>
 
-                    <!-- LINHA 2: TREINAMENTOS MENSAIS REGIONALIZADOS -->
-                    <div class="bg-camilIce rounded-[2rem] p-6 lg:p-8 case-shadow border border-gray-100 flex flex-col lg:flex-row items-center gap-8 relative overflow-hidden mb-6">
-                        <div class="flex-1 w-full relative z-10">
+                    <!-- LINHA 2 -->
+                    <div class="bg-camilIce rounded-[2rem] p-6 lg:p-8 case-shadow border border-gray-100 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 relative overflow-hidden mb-6 items-center">
+                        <div class="lg:col-span-7 relative z-10">
                             <div class="w-10 h-10 bg-softLilac/10 rounded-xl flex items-center justify-center text-softLilac text-lg mb-4">
                                 <i class="fa-solid fa-map-location-dot"></i>
                             </div>
                             <span class="text-[9px] font-black text-softLilac uppercase tracking-widest">Estratégia Customizada & Escala</span>
-                            <h3 class="text-3xl font-black uppercase tracking-tighter text-charcoal mt-2 mb-3 leading-none">
-                                Treinamentos Mensais <span class="text-softLilac">Regionalizados</span>
+                            <h3 class="text-3xl lg:text-4xl font-black uppercase tracking-tighter text-charcoal mt-2 mb-3 leading-none">
+                                Treinamentos Mensais<br>
+                                <span class="text-softLilac">Regionalizados</span>
                             </h3>
-                            <p class="text-xs sm:text-sm font-medium text-gray-600 leading-relaxed mt-4">
+                            <p class="text-xs sm:text-sm font-medium text-gray-600 leading-relaxed mt-4 pr-0 lg:pr-4">
                                 Criação estratégica de materiais de treinamento desenvolvidos de forma customizada para <b>8 regionais diferentes</b>, garantindo um impacto assertivo e alinhado às especificidades de cada localidade, focando em categorias e estratégias como <i>Execução Perfeita</i> e <i>Loja Perfeita</i>.
                             </p>
-                            <button onclick="openCaseInfo('mensais_regional')" class="mt-8 w-fit bg-softLilac text-white rounded-xl px-6 py-3 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-purple-700 transition-all shadow-md flex items-center gap-2">Ver detalhes do projeto <i class="fa-solid fa-arrow-right"></i></button>
+                            <button onclick="openCaseInfo('mensais_regional')" class="mt-8 w-full bg-softLilac text-white rounded-xl py-3.5 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-purple-700 transition-all shadow-md flex items-center justify-center gap-2">Ver detalhes do projeto <i class="fa-solid fa-arrow-right"></i></button>
                         </div>
-                        <div class="w-full lg:w-auto flex-[1.2] relative z-10 flex flex-col gap-4">
-                            <!-- Caixinhas de Texto (Sem os materiais Canva) -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 h-full">
-                                <div class="bg-white border border-gray-100 rounded-2xl p-5 flex flex-col justify-center shadow-sm h-full">
-                                    <div class="flex items-center gap-3 mb-3">
-                                        <i class="fa-solid fa-bezier-curve text-softLilac text-2xl"></i>
-                                        <div>
-                                            <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest block leading-none mb-1">Magnitude Operacional</span>
-                                            <span class="text-base font-black text-charcoal leading-none">8 Regionais Distintas</span>
-                                        </div>
-                                    </div>
+                        
+                        <div class="lg:col-span-5 relative z-10 flex flex-col gap-4">
+                            <div class="bg-white border border-gray-100 rounded-2xl p-5 lg:p-6 flex flex-row items-center gap-4 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-bezier-curve text-softLilac text-xl"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest block mb-1">Magnitude Operacional</span>
+                                    <span class="text-base font-black text-charcoal leading-none block mb-1.5">8 Regionais Distintas</span>
                                     <p class="text-[11px] font-medium text-gray-500 leading-tight">Conteúdos moldados para a necessidade de cada região.</p>
                                 </div>
-                                <div class="bg-white border border-gray-100 rounded-2xl p-5 flex flex-col justify-center shadow-sm h-full">
-                                    <div class="flex items-center gap-3 mb-3">
-                                        <i class="fa-solid fa-pen-ruler text-vibrantOrange text-2xl"></i>
-                                        <div>
-                                            <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest block leading-none mb-1">Design Instrucional</span>
-                                            <span class="text-base font-black text-charcoal leading-none">Identidade Autoral</span>
-                                        </div>
-                                    </div>
+                            </div>
+                            
+                            <div class="bg-white border border-gray-100 rounded-2xl p-5 lg:p-6 flex flex-row items-center gap-4 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-pen-ruler text-vibrantOrange text-xl"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest block mb-1">Design Instrucional</span>
+                                    <span class="text-base font-black text-charcoal leading-none block mb-1.5">Identidade Autoral</span>
                                     <p class="text-[11px] font-medium text-gray-500 leading-tight">Criação de KV, comunicados e material de apoio.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- LINHA 3: ONBOARDING + CAMPANHAS DE TRADE -->
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
-                        <div class="lg:col-span-7 bg-white rounded-[2rem] p-6 lg:p-8 case-shadow border border-gray-100 relative overflow-hidden flex flex-col justify-between">
-                            <div>
+                    <!-- LINHA 3 -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6 items-center">
+                        <div class="relative flex flex-col items-center justify-center gap-6 py-4 w-full">
+                            <div class="bg-white rounded-[2rem] p-6 lg:p-8 shadow-xl border border-gray-100 w-full z-10">
                                 <div class="w-10 h-10 bg-vibrantOrange/10 rounded-xl flex items-center justify-center text-vibrantOrange text-lg mb-4">
                                     <i class="fa-solid fa-bolt"></i>
                                 </div>
-                                <span class="text-[9px] font-black text-vibrantOrange uppercase tracking-widest">Integração Crítica</span>
-                                <h3 class="text-2xl sm:text-3xl font-black uppercase tracking-tighter text-charcoal mt-2 mb-3 leading-tight">
-                                    Onboarding de Alta Performance
-                                </h3>
-                                <p class="text-xs sm:text-sm font-medium text-gray-600 leading-relaxed mb-5">
-                                    Reestruturação completa da jornada de entrada em operações críticas, reduzindo sobrecarga cognitiva e acelerando a autonomia técnica.
-                                </p>
-                                <div class="flex gap-6 mt-3">
+                                <span class="text-[9px] font-black text-vibrantOrange uppercase tracking-widest block mb-1">Integração Crítica</span>
+                                <h4 class="text-xl font-black uppercase tracking-tight text-charcoal mb-3 leading-tight">Onboarding de Alta Performance</h4>
+                                <p class="text-xs font-medium text-gray-600 leading-relaxed mb-6">Reformulação total da experiência de boas-vindas e integração para colaboradores em operações de altíssima complexidade (sistemas bancários, prevenção a fraudes e recuperação de ativos). O foco foi desenhar uma jornada que acelere a autonomia técnica (Ramp-up) sem gerar sobrecarga cognitiva nos primeiros dias.</p>
+                                <div class="grid grid-cols-3 gap-2 text-center bg-gray-50 rounded-xl p-3 border border-gray-100">
                                     <div>
-                                        <span class="block text-2xl font-black text-charcoal mb-0.5">-30%</span>
-                                        <span class="text-[9px] uppercase font-black text-gray-400 tracking-widest">Ramp-up</span>
+                                        <span class="block text-xl font-black text-softLilac">-30%</span>
+                                        <span class="text-[8px] uppercase font-black text-gray-500 tracking-wider">Ramp-up</span>
                                     </div>
                                     <div>
-                                        <span class="block text-2xl font-black text-charcoal mb-0.5">+25%</span>
-                                        <span class="text-[9px] uppercase font-black text-gray-400 tracking-widest">Resolutividade</span>
+                                        <span class="block text-xl font-black text-vibrantOrange">+25%</span>
+                                        <span class="text-[8px] uppercase font-black text-gray-500 tracking-wider">Resolutividade</span>
+                                    </div>
+                                    <div>
+                                        <span class="block text-xl font-black text-brandBlue">92%</span>
+                                        <span class="text-[8px] uppercase font-black text-gray-500 tracking-wider">NPS Treina</span>
                                     </div>
                                 </div>
                             </div>
-                            <button onclick="openCaseInfo('onboarding')" class="w-full mt-6 bg-gray-50 text-charcoal border border-gray-100 rounded-xl py-3 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-gray-100 transition-all">Explorar Onboarding</button>
-                        </div>
 
-                        <div class="lg:col-span-5 bg-blue-50/70 rounded-[2rem] p-6 lg:p-8 border border-blue-100 relative overflow-hidden flex flex-col justify-between">
-                            <div>
-                                <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-brandBlue text-lg mb-4 shadow-sm">
+                            <div class="bg-white rounded-[2rem] p-6 lg:p-8 shadow-xl border border-gray-100 w-full z-20">
+                                <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-brandBlue text-lg mb-4">
                                     <i class="fa-solid fa-shop"></i>
                                 </div>
-                                <span class="text-[9px] font-black text-brandBlue uppercase tracking-widest">Marketing & Campo</span>
-                                <h3 class="text-2xl sm:text-3xl font-black uppercase tracking-tighter text-charcoal mt-2 mb-3 leading-tight">
-                                    Campanhas de Trade
-                                </h3>
-                                <p class="text-xs sm:text-sm font-medium text-gray-600 leading-relaxed">
-                                    Guias rápidos para o PDV e tradução de marcas complexas em uma comunicação clara para quem executa na ponta.
-                                </p>
+                                <span class="text-[9px] font-black text-brandBlue uppercase tracking-widest block mb-1">Design Instrucional & Execução</span>
+                                <h4 class="text-xl font-black uppercase tracking-tight text-charcoal mb-3 leading-tight">Campanhas de Trade</h4>
+                                <p class="text-xs font-medium text-gray-600 leading-relaxed m-0">Tradução de diretrizes complexas da indústria em manuais práticos, guias rápidos e campanhas de incentivo para o PDV, garantindo clareza na execução de ponta e o engajamento das equipes de vendas nas ações estratégicas.</p>
                             </div>
-                            <button onclick="openCaseInfo('trade_campaigns')" class="w-full mt-6 bg-white text-brandBlue rounded-xl py-3 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-brandBlue hover:text-white transition-all shadow-sm">Ver Detalhes <i class="fa-solid fa-arrow-right ml-2"></i></button>
+                        </div>
+
+                        <div class="h-full flex">
+                            <div class="bg-white rounded-[2rem] p-6 lg:p-8 border-t-4 border-vibrantOrange shadow-xl border border-gray-100 flex flex-col z-10 w-full">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center text-vibrantOrange text-lg shrink-0">
+                                        <i class="fa-solid fa-arrows-spin"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-[9px] font-black text-vibrantOrange uppercase tracking-widest block mb-0.5">Metodologia Estratégica</span>
+                                        <h3 class="text-2xl font-black text-charcoal leading-none">T&D Integrado</h3>
+                                    </div>
+                                </div>
+                                <div class="text-xs text-gray-600 mb-6 space-y-3 leading-relaxed">
+                                    <p>
+                                        Transformei treinamentos isolados que duravam apenas um dia em uma proposta estruturada de uma <b>jornada contínua de desenvolvimento de 90 dias</b> para as equipes de campo.
+                                    </p>
+                                    <p>
+                                        Essa visão estratégica de T&D conectou a capacitação técnica e comportamental à rotina real do PDV. A proposta foi abraçada pela liderança e resultou em um marco transformador para a empresa: a <b>implantação bem-sucedida de uma plataforma de treinamento LMS própria</b>.
+                                    </p>
+                                    <p>
+                                        O resultado foi a escalabilidade total do conhecimento em nível nacional, consolidando uma cultura de aprendizagem mensurável e gerando impacto direto no engajamento e nos resultados de execução no ponto de venda.
+                                    </p>
+                                </div>
+                                <div class="mt-auto border border-gray-200 rounded-2xl p-4 bg-white shadow-sm flex flex-col justify-between space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-[10px] font-black uppercase text-charcoal tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-diagram-project text-vibrantOrange"></i> Prévia do Material</span>
+                                        <a href="https://www.canva.com/design/DAHPrXXMGG0/01Tu5fSXn9lUHhJcVaNU0Q/view" target="_blank" class="text-[9px] font-extrabold text-vibrantOrange hover:underline flex items-center gap-1">Abrir Canva <i class="fa-solid fa-external-link-alt text-[8px]"></i></a>
+                                    </div>
+                                    <div class="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-gray-100 border border-gray-100 shadow-inner">
+                                        <iframe loading="lazy" class="absolute inset-0 w-full h-full border-none" src="https://www.canva.com/design/DAHPrXXMGG0/01Tu5fSXn9lUHhJcVaNU0Q/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- LINHA 4: URBAN PULSE PERCUSSION -->
-                    <div class="bg-gradient-to-br from-softLilac to-[#69249e] rounded-[2rem] p-6 lg:p-10 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-8 relative overflow-hidden text-white">
+                    <!-- CARD: EXECUÇÃO NEWS -->
+                    <div class="bg-white rounded-[2rem] p-6 lg:p-8 mt-6 mb-6 shadow-xl border border-blue-100 relative overflow-hidden flex flex-col lg:flex-row gap-8 items-center">
+                        <div class="flex-1 relative z-10 w-full">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-brandBlue text-lg shrink-0">
+                                    <i class="fa-solid fa-newspaper"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[9px] font-black text-brandBlue uppercase tracking-widest block mb-0.5">Comunicação e Engajamento</span>
+                                    <h3 class="text-3xl font-black text-charcoal leading-none">Execução News</h3>
+                                </div>
+                            </div>
+                            <div class="text-sm font-medium text-gray-600 mb-2 space-y-3 leading-relaxed">
+                                <p>
+                                    O <b>Execução News</b> nasceu como um canal vivo de comunicação interna quinzenal para aproximar, engajar e dar voz ao time de campo geograficamente disperso. Mais do que um informativo, era um jornal de notícias e celebração.
+                                </p>
+                                <p>
+                                    Cada uma das <strong>90 edições lançadas</strong> trazia as campanhas vigentes, metas alcançadas, novidades de categorias e, principalmente, as conquistas da equipe. Os próprios promotores e líderes enviavam fotos e relatos de suas execuções para aparecer no jornal, transformando o trabalho em mídia e destaque real.
+                                </p>
+                                <p>
+                                    Foi um veículo essencial onde o time se conectava não apenas com a execução, mas com o próprio time comercial, gerando forte cultura de pertencimento e sinergia em toda a operação.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-[45%] border border-gray-200 rounded-2xl p-4 bg-white shadow-sm flex flex-col justify-between space-y-3 relative z-10 shrink-0">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-black uppercase text-charcoal tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-images text-brandBlue"></i> Prévia do Material</span>
+                                <a href="https://www.canva.com/design/DAHPsK8dIEc/7Vx1VFDKg1OC8aF-d1yX9g/view" target="_blank" class="text-[9px] font-extrabold text-brandBlue hover:underline flex items-center gap-1">Abrir Canva <i class="fa-solid fa-external-link-alt text-[8px]"></i></a>
+                            </div>
+                            <div class="relative w-full aspect-[1/1.41] rounded-xl overflow-hidden bg-gray-100 border border-gray-100 shadow-inner">
+                                <iframe loading="lazy" class="absolute inset-0 w-full h-full border-none" src="https://www.canva.com/design/DAHPsK8dIEc/7Vx1VFDKg1OC8aF-d1yX9g/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- URBAN PULSE PERCUSSION -->
+                    <div class="bg-gradient-to-br from-softLilac to-[#69249e] rounded-[2rem] p-6 lg:p-10 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-8 relative overflow-hidden text-white mt-6">
                         <div class="absolute -right-16 -top-16 opacity-10 text-[250px] leading-none pointer-events-none"><i class="fa-solid fa-drum"></i></div>
                         <div class="flex-1 relative z-10 max-w-2xl">
                             <span class="bg-white/20 px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest backdrop-blur-md mb-4 inline-block">Projeto Social & Liderança Criativa</span>
@@ -838,7 +885,7 @@
 
             <!-- ABA CURRÍCULO -->
             <section id="page-curriculo" class="page-content p-0 lg:p-0">
-                <div class="sticky top-[80px] z-[40] bg-white border-b border-gray-100 shadow-sm px-10 py-6">
+                <div class="sticky top-[80px] z-[40] bg-white border-b border-gray-100 shadow-sm px-6 lg:px-10 py-6">
                     <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-6">
                         <div>
                             <h2 class="text-3xl font-black tracking-tighter uppercase leading-tight">Luana Bessa</h2>
@@ -862,8 +909,8 @@
                     </div>
                 </div>
 
-                <div class="max-w-7xl mx-auto px-10 py-12">
-                    <div class="mb-12 border-l-4 border-vibrantOrange pl-8">
+                <div class="max-w-7xl mx-auto px-6 lg:px-10 py-12">
+                    <div class="mb-12 border-l-4 border-vibrantOrange pl-6 lg:pl-8">
                         <h3 class="text-lg font-black italic tracking-tighter uppercase mb-2">COMPETÊNCIAS & ESTRATÉGIA</h3>
                         <p class="text-sm font-medium text-gray-600 leading-relaxed max-w-4xl">
                             Profissional de T&D com experiência em Educação Corporativa, Design de Aprendizagem, Comunicação, Operações e Performance, conectando desenvolvimento de pessoas às necessidades estratégicas do negócio.
@@ -877,7 +924,7 @@
                                     <div class="w-8 h-[2px] bg-softLilac"></div> EXPERIÊNCIA PROFISSIONAL
                                 </h3>
                                 <div class="space-y-12">
-                                    <div class="relative pl-8 border-l-2 border-gray-100 pb-8">
+                                    <div class="relative pl-6 lg:pl-8 border-l-2 border-gray-100 pb-8">
                                         <div class="absolute w-4 h-4 bg-vibrantOrange rounded-full -left-[9px] top-1 border-2 border-white"></div>
                                         <span class="text-[10px] font-black text-vibrantOrange uppercase">11/2024 - 06/2026</span>
                                         <h4 class="text-xl font-black text-black uppercase mt-1">Analista de Treinamento e Desenvolvimento Pleno</h4>
@@ -896,7 +943,7 @@
                                             <li>Atuação na conexão entre estratégia da indústria, aprendizagem, comunicação e execução em campo, apoiando o desenvolvimento e a performance das equipes de Trade Marketing.</li>
                                         </ul>
                                     </div>
-                                    <div class="relative pl-8 border-l-2 border-gray-100 pb-8">
+                                    <div class="relative pl-6 lg:pl-8 border-l-2 border-gray-100 pb-8">
                                         <div class="absolute w-4 h-4 bg-vibrantOrange rounded-full -left-[9px] top-1 border-2 border-white"></div>
                                         <span class="text-[10px] font-black text-vibrantOrange uppercase">08/2023 - 03/2024</span>
                                         <h4 class="text-xl font-black text-black uppercase mt-1">Analista de Treinamento e Desenvolvimento Júnior</h4>
@@ -911,12 +958,12 @@
                                             <li>Utilização de dados e feedbacks da operação para direcionamento de ações de treinamento e apoiar a performance.</li>
                                         </ul>
                                     </div>
-                                    <div class="relative pl-8 border-l-2 border-gray-100 pb-8">
+                                    <div class="relative pl-6 lg:pl-8 border-l-2 border-gray-100 pb-8">
                                         <div class="absolute w-4 h-4 bg-charcoal rounded-full -left-[9px] top-1 border-2 border-white"></div>
                                         <h4 class="text-lg font-black text-black uppercase tracking-tighter">Concentrix Brasil / C6 Bank</h4>
                                         <div class="mt-8 space-y-12 relative">
                                             <div class="absolute left-2 top-2 bottom-2 w-[1px] bg-gray-100"></div>
-                                            <div class="relative pl-8">
+                                            <div class="relative pl-6 lg:pl-8">
                                                 <div class="absolute w-2 h-2 bg-vibrantOrange rounded-full left-[3px] top-2"></div>
                                                 <span class="text-[9px] font-black text-vibrantOrange uppercase">02/2022 - 06/2023</span>
                                                 <h5 class="text-lg font-black text-black uppercase mt-1">Analista de Treinamento e Desenvolvimento Pleno</h5>
@@ -933,7 +980,7 @@
                                                     <li>Atuação integrada entre T&D, Qualidade, Operação e Performance, conectando capacitação às necessidades do negócio e aos indicadores da operação.</li>
                                                 </ul>
                                             </div>
-                                            <div class="relative pl-8">
+                                            <div class="relative pl-6 lg:pl-8">
                                                 <div class="absolute w-2 h-2 bg-gray-400 rounded-full left-[3px] top-2"></div>
                                                 <span class="text-[9px] font-black text-gray-400 uppercase">02/2021 – 01/2022</span>
                                                 <h5 class="text-lg font-black text-black uppercase mt-1">Analista de Prevenção a Fraude II</h5>
@@ -946,7 +993,7 @@
                                                     <li>Aplicação de protocolos de segurança bancária, prevenção a perdas e procedimentos operacionais, garantindo aderência às diretrizes da operação.</li>
                                                 </ul>
                                             </div>
-                                            <div class="relative pl-8">
+                                            <div class="relative pl-6 lg:pl-8">
                                                 <div class="absolute w-2 h-2 bg-gray-400 rounded-full left-[3px] top-2"></div>
                                                 <span class="text-[9px] font-black text-gray-400 uppercase">03/2020 – 02/2021</span>
                                                 <h5 class="text-lg font-black text-black uppercase mt-1">Analista de Prevenção a Fraude I</h5>
@@ -1080,10 +1127,10 @@
             </section>
 
             <!-- ABA GALERIA -->
-            <section id="page-galeria" class="page-content p-10 lg:p-14">
+            <section id="page-galeria" class="page-content p-6 lg:p-14">
                 <div class="max-w-7xl mx-auto space-y-10">
                     <div class="flex justify-between items-center border-b border-gray-100 pb-4">
-                        <h2 class="text-4xl font-black italic tracking-tighter text-charcoal uppercase">Portfólio Visual</h2>
+                        <h2 class="text-3xl lg:text-4xl font-black italic tracking-tighter text-charcoal uppercase">Portfólio Visual</h2>
                         <span class="text-vibrantOrange font-bold text-[9px] uppercase tracking-widest">Eventos & Dinâmicas</span>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -1126,19 +1173,22 @@
             window.scrollTo(0,0);
         }
 
-        function setViewport(mode) {
-            const wrapper = document.getElementById('viewport-wrapper');
-            const btnD = document.getElementById('vp-desktop');
-            const btnM = document.getElementById('vp-mobile');
-            if (mode === 'mobile') {
-                wrapper.classList.add('mode-mobile');
-                btnM.classList.add('bg-white', 'shadow-sm'); btnM.classList.remove('text-gray-400');
-                btnD.classList.remove('bg-white', 'shadow-sm'); btnD.classList.add('text-gray-400');
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
             } else {
-                wrapper.classList.remove('mode-mobile');
-                btnD.classList.add('bg-white', 'shadow-sm'); btnD.classList.remove('text-gray-400');
-                btnM.classList.remove('bg-white', 'shadow-sm'); btnM.classList.add('text-gray-400');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
             }
+        }
+
+        function switchTabMobile(tabId) {
+            switchTab(tabId);
+            toggleMobileMenu();
         }
 
         function copyEmail() {
@@ -1206,7 +1256,6 @@
                             </div>
                         </div>
 
-                        <!-- Blue Highlight Pill Box (Moved to left column to balance whitespace) -->
                         <div class="bg-camilBlue text-white p-6 rounded-3xl shadow-md relative overflow-hidden flex items-start gap-4">
                             <div class="w-8 h-8 bg-white/20 rounded-xl flex items-center justify-center shrink-0 mt-0.5">
                                 <i class="fa-solid fa-quote-left text-white text-xs"></i>
@@ -1218,7 +1267,6 @@
                     </div>
 
                     <div class="lg:col-span-5 space-y-6">
-                        <!-- KV / Canva Embed -->
                         <div class="border border-gray-200 rounded-3xl p-5 bg-white shadow-sm space-y-3">
                             <div class="flex items-center justify-between">
                                 <span class="text-[10px] font-black uppercase tracking-widest text-camilBlue flex items-center gap-1.5"><i class="fa-solid fa-palette"></i> KV (Key Visual)</span>
@@ -1229,7 +1277,6 @@
                             </div>
                         </div>
 
-                        <!-- Vídeo de Abertura / Canva Embed -->
                         <div class="border border-gray-200 rounded-3xl p-5 bg-white shadow-sm space-y-3">
                             <div class="flex items-center justify-between">
                                 <span class="text-[10px] font-black uppercase tracking-widest text-camilBlue flex items-center gap-1.5"><i class="fa-solid fa-video"></i> Vídeo de Abertura</span>
@@ -1242,12 +1289,10 @@
                     </div>
                 </div>
 
-                <!-- VÍDEOS DE ENCERRAMENTO E REAÇÕES LADO A LADO -->
                 <div class="mt-8 pt-8 border-t border-gray-200 space-y-4 text-left">
                     <h4 class="text-xs font-black uppercase text-charcoal tracking-widest flex items-center gap-2"><i class="fa-solid fa-film text-camilBlue"></i> Vídeo de Encerramento & Reações da Equipe</h4>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Vídeo de Encerramento (Arquivo Confidencial) -->
                         <div class="border border-gray-200 rounded-3xl p-5 bg-white shadow-sm space-y-3 flex flex-col justify-between">
                             <div class="flex items-center justify-between">
                                 <span class="text-[10px] font-black uppercase tracking-widest text-camilBlue flex items-center gap-1.5"><i class="fa-solid fa-heart"></i> Encerramento (Arquivo Confidencial)</span>
@@ -1258,7 +1303,6 @@
                             </div>
                         </div>
 
-                        <!-- Reações da Equipe ao Vídeo de Encerramento -->
                         <div class="border border-gray-200 rounded-3xl p-5 bg-white shadow-sm space-y-3 flex flex-col justify-between">
                             <div class="flex items-center justify-between">
                                 <span class="text-[10px] font-black uppercase tracking-widest text-camilBlue flex items-center gap-1.5"><i class="fa-solid fa-face-smile-beam"></i> Reações da Equipe</span>
@@ -1271,12 +1315,10 @@
                     </div>
                 </div>
 
-                <!-- Adicionais Lado a Lado (Credencial, Banner, Foto Lembrança) -->
                 <div class="mt-8 pt-8 border-t border-gray-200 space-y-4 text-left">
                     <h4 class="text-xs font-black uppercase text-charcoal tracking-widest flex items-center gap-2"><i class="fa-solid fa-id-badge text-camilBlue"></i> Materiais de Apoio & Desdobramentos</h4>
                     
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                        <!-- Credencial -->
                         <div class="border border-gray-200 rounded-2xl p-4 bg-white shadow-sm flex flex-col justify-between space-y-3">
                             <div class="flex items-center justify-between">
                                 <span class="text-[10px] font-black uppercase text-charcoal tracking-wider">Credencial</span>
@@ -1287,7 +1329,6 @@
                             </div>
                         </div>
 
-                        <!-- Banner -->
                         <div class="border border-gray-200 rounded-2xl p-4 bg-white shadow-sm flex flex-col justify-between space-y-3">
                             <div class="flex items-center justify-between">
                                 <span class="text-[10px] font-black uppercase text-charcoal tracking-wider">Banner</span>
@@ -1298,7 +1339,6 @@
                             </div>
                         </div>
 
-                        <!-- Foto Lembrança -->
                         <div class="border border-gray-200 rounded-2xl p-4 bg-white shadow-sm flex flex-col justify-between space-y-3">
                             <div class="flex items-center justify-between">
                                 <span class="text-[10px] font-black uppercase text-charcoal tracking-wider">Foto Lembrança</span>
@@ -1330,73 +1370,44 @@
                             <p class="text-xs text-gray-600 font-medium leading-relaxed">Conteúdos inteiramente focados em pilares vitais da indústria, como as diretrizes de <b>Execução Perfeita</b> e <b>Loja Perfeita</b>, acompanhados de dinâmicas de grupo conduzidas presencialmente.</p>
                         </div>
                     </div>
-                    <div class="bg-blue-50 border-l-4 border-brandBlue p-4 rounded-xl shadow-xs">
-                        <h4 class="text-xs font-black text-brandBlue uppercase mb-1">Identidade Visual Própria</h4>
-                        <p class="text-xs text-gray-700 font-medium leading-relaxed">Além do conteúdo técnico, fui responsável pela criação total da identidade visual desses treinamentos: KV exclusivo por tema, comunicados prévios, apresentações, apostilas e todo o material de apoio e sustentação pós-treinamento para a equipe absorver no dia a dia.</p>
-                    </div>
 
-                    <div class="pt-6 border-t border-gray-200 mt-6">
+                    <div class="pt-2">
                         <h4 class="text-xs font-black uppercase text-charcoal tracking-widest flex items-center gap-2 mb-4"><i class="fa-solid fa-folder-open text-softLilac"></i> Materiais do Projeto</h4>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                            <!-- Biscoitos -->
                             <div class="bg-white border border-gray-100 rounded-xl p-3 shadow-sm flex flex-col">
-                                <span class="text-[9px] font-black uppercase text-charcoal flex items-center gap-1.5 mb-2"><i class="fa-solid fa-cookie text-[#D2B48C]"></i> Biscoitos</span>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-[9px] font-black uppercase text-charcoal flex items-center gap-1.5"><i class="fa-solid fa-cookie text-[#D2B48C]"></i> Biscoitos</span>
+                                    <a href="https://www.canva.com/design/DAHSNd4CIvk/QGisrejINfCSUK0uM277fg/view" target="_blank" class="bg-camilBlue text-white px-2 py-1 rounded-md text-[8px] font-black uppercase tracking-widest hover:bg-blue-700 transition-colors shadow-sm">Abrir Canva</a>
+                                </div>
                                 <div class="relative w-full aspect-video rounded-lg overflow-hidden bg-gray-50 border border-gray-100">
                                     <iframe loading="lazy" class="absolute inset-0 w-full h-full border-none" src="https://www.canva.com/design/DAHSNd4CIvk/QGisrejINfCSUK0uM277fg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
                                 </div>
                             </div>
-                            <!-- Café -->
                             <div class="bg-white border border-gray-100 rounded-xl p-3 shadow-sm flex flex-col">
-                                <span class="text-[9px] font-black uppercase text-charcoal flex items-center gap-1.5 mb-2"><i class="fa-solid fa-mug-hot text-[#6F4E37]"></i> Café</span>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-[9px] font-black uppercase text-charcoal flex items-center gap-1.5"><i class="fa-solid fa-mug-hot text-[#6F4E37]"></i> Café</span>
+                                    <a href="https://www.canva.com/design/DAHSNC6T9W8/aALLleoJySDqI_m1-W3wAg/view" target="_blank" class="bg-camilBlue text-white px-2 py-1 rounded-md text-[8px] font-black uppercase tracking-widest hover:bg-blue-700 transition-colors shadow-sm">Abrir Canva</a>
+                                </div>
                                 <div class="relative w-full aspect-video rounded-lg overflow-hidden bg-gray-50 border border-gray-100">
                                     <iframe loading="lazy" class="absolute inset-0 w-full h-full border-none" src="https://www.canva.com/design/DAHSNC6T9W8/aALLleoJySDqI_m1-W3wAg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
                                 </div>
                             </div>
-                            <!-- Pescados -->
                             <div class="bg-white border border-gray-100 rounded-xl p-3 shadow-sm flex flex-col">
-                                <span class="text-[9px] font-black uppercase text-charcoal flex items-center gap-1.5 mb-2"><i class="fa-solid fa-fish text-[#0077B5]"></i> Pescados</span>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-[9px] font-black uppercase text-charcoal flex items-center gap-1.5"><i class="fa-solid fa-fish text-[#0077B5]"></i> Pescados</span>
+                                    <a href="https://www.canva.com/design/DAHQNBuh60g/zNgQC1dtkKdmxowwYNmvYw/view" target="_blank" class="bg-camilBlue text-white px-2 py-1 rounded-md text-[8px] font-black uppercase tracking-widest hover:bg-blue-700 transition-colors shadow-sm">Abrir Canva</a>
+                                </div>
                                 <div class="relative w-full aspect-video rounded-lg overflow-hidden bg-gray-50 border border-gray-100">
                                     <iframe loading="lazy" class="absolute inset-0 w-full h-full border-none" src="https://www.canva.com/design/DAHQNBuh60g/zNgQC1dtkKdmxowwYNmvYw/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                `
-            },
-            onboarding: {
-                tag: 'INTEGRAÇÃO & RAMP-UP',
-                t: 'ONBOARDING DE ALTA PERFORMANCE',
-                r: `
-                <div class="space-y-6 text-left">
-                    <p class="text-sm lg:text-base font-medium text-gray-700 leading-relaxed">
-                        Reformulação total da experiência de boas-vindas e integração para colaboradores que atuam em operações de altíssima complexidade (como sistemas bancários, prevenção a fraudes e recuperação de ativos). O foco foi desenhar uma jornada que acelere a autonomia técnica (Ramp-up) sem gerar sobrecarga cognitiva nos primeiros dias.
-                    </p>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-                        <div class="bg-white border border-gray-200 p-5 rounded-2xl shadow-xs">
-                            <span class="block text-3xl font-black text-softLilac mb-1">-30%</span>
-                            <span class="text-[9px] uppercase font-black text-gray-500 tracking-wider">Redução da Curva de Aprendizado</span>
-                        </div>
-                        <div class="bg-white border border-gray-200 p-5 rounded-2xl shadow-xs">
-                            <span class="block text-3xl font-black text-vibrantOrange mb-1">+25%</span>
-                            <span class="text-[9px] uppercase font-black text-gray-500 tracking-wider">Aumento de Resolutividade Inicial</span>
-                        </div>
-                        <div class="bg-white border border-gray-200 p-5 rounded-2xl shadow-xs">
-                            <span class="block text-3xl font-black text-brandBlue mb-1">92%</span>
-                            <span class="text-[9px] uppercase font-black text-gray-500 tracking-wider">NPS e Satisfação do Treinamento</span>
-                        </div>
+
+                    <div class="bg-blue-50 border-l-4 border-brandBlue p-4 rounded-xl shadow-xs mt-2">
+                        <h4 class="text-xs font-black text-brandBlue uppercase mb-1">Identidade Visual Própria</h4>
+                        <p class="text-xs text-gray-700 font-medium leading-relaxed">Além do conteúdo técnico, fui responsável pela criação total da identidade visual desses treinamentos: KV exclusivo por tema, comunicados prévios, apresentações, apostilas e todo o material de apoio e sustentação pós-treinamento para a equipe absorver no dia a dia.</p>
                     </div>
-                </div>
-                `
-            },
-            trade_campaigns: {
-                tag: 'DESIGN INSTRUCIONAL & EXECUÇÃO',
-                t: 'CAMPANHAS DE TRADE MARKETING',
-                r: `
-                <div class="space-y-6 text-left">
-                    <p class="text-sm lg:text-base font-medium text-gray-700 leading-relaxed">
-                        Tradução de diretrizes complexas da indústria em manuais práticos, guias rápidos e campanhas de incentivo para o PDV, garantindo clareza na execução de ponta.
-                    </p>
                 </div>
                 `
             },
