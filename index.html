@@ -18,6 +18,7 @@
                         charcoal: '#2C2C2C',
                         vibrantOrange: '#FF6B35',
                         softLilac: '#9D4EDD',
+                        pastelLilacBg: '#EAE4F5',
                         waGreen: '#25D366',
                         pastelOrange: '#FFD8B1',
                         pastelLilac: '#E0BBE4',
@@ -91,6 +92,21 @@
             0% { transform: translateY(0px) rotate(var(--rotation, 0deg)); }
             50% { transform: translateY(-8px) rotate(var(--rotation, 0deg)); }
             100% { transform: translateY(0px) rotate(var(--rotation, 0deg)); }
+        }
+
+        /* Estilo interativo para o mural de fotos com hover */
+        .interactive-photo-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .interactive-photo-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 35px rgba(157, 78, 221, 0.2);
+        }
+        .interactive-photo-card:hover img {
+            transform: scale(1.08);
+        }
+        .interactive-photo-card img {
+            transition: transform 0.6s ease;
         }
     </style>
 </head>
@@ -404,7 +420,7 @@
                         <div class="bg-purple-50/50 p-6 rounded-2xl border border-purple-100 space-y-4">
                             <h4 class="text-xs font-black text-softLilac uppercase tracking-widest"><i class="fa-solid fa-building-columns mr-1"></i> Ecossistema Diversificado de Cobrança</h4>
                             <p class="text-xs font-medium text-gray-600 leading-relaxed">
-                                Atuei in operações que envolviam differentes carteiras, produtos financeiros e perfis de clientes. Entre as principais carteiras e empresas atendidas estavam:
+                                Atuei in operações que envolviam differentes carteiras, produtos financeiros e perfis de clientes. Entre as principales carteiras e empresas atendidas estavam:
                             </p>
                             <div class="flex flex-wrap gap-2">
                                 <span class="bg-white px-2.5 py-1 rounded-md text-[11px] font-bold shadow-xs border border-purple-200">Bradesco</span>
@@ -842,7 +858,7 @@
                                     O <b>Execução News</b> nasceu como um canal vivo de comunicação interna quinzenal para aproximar, engajar e dar voz ao time de campo geograficamente disperso. Mais do que um informativo, era um jornal de notícias e celebração.
                                 </p>
                                 <p>
-                                    Cada uma das <strong>90 edições lançadas</strong> trazia as campanhas vigentes, metas alcançadas, novidades de categorias e, principalmente, as conquistas da equipe. Os próprios promotores e líderes enviavam fotos e relatos de suas execuções para aparecer no jornal, transformando o trabalho em mídia e destaque real.
+                                    Cada uma das <strong>90 edições lançadas</strong> trazias as campanhas vigentes, metas alcançadas, novidades de categorias e, principalmente, as conquistas da equipe. Os próprios promotores e líderes enviavam fotos e relatos de suas execuções para aparecer no jornal, transformando o trabalho em mídia e destaque real.
                                 </p>
                                 <p>
                                     Foi um veículo essencial onde o time se conectava não apenas com a execução, mas com o próprio time comercial, gerando forte cultura de pertencimento e sinergia em toda a operação.
@@ -1126,19 +1142,201 @@
                 </div>
             </section>
 
-            <!-- ABA GALERIA -->
-            <section id="page-galeria" class="page-content p-6 lg:p-14">
-                <div class="max-w-7xl mx-auto space-y-10">
-                    <div class="flex justify-between items-center border-b border-gray-100 pb-4">
-                        <h2 class="text-3xl lg:text-4xl font-black italic tracking-tighter text-charcoal uppercase">Portfólio Visual</h2>
-                        <span class="text-vibrantOrange font-bold text-[9px] uppercase tracking-widest">Eventos & Dinâmicas</span>
+            <!-- ABA GALERIA: MURAL DE ENTREGAVEIS (FUNDO LILÁS PASTEL SUAVE) -->
+            <section id="page-galeria" class="page-content p-6 lg:p-14 bg-pastelLilacBg text-charcoal min-h-[85vh]">
+                <div class="max-w-7xl mx-auto space-y-14">
+                    
+                    <!-- CABEÇALHO DA GALERIA -->
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-softLilac/20 pb-6">
+                        <div>
+                            <span class="bg-softLilac/10 text-softLilac px-3.5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border border-softLilac/30 inline-block mb-3">Portfólio Visual & Vivências</span>
+                            <h2 class="text-4xl lg:text-5xl font-black italic tracking-tighter uppercase leading-none text-charcoal">Mural de entregaveis</h2>
+                        </div>
+                        <p class="text-xs lg:text-sm font-bold text-gray-600 max-w-md uppercase tracking-tight">
+                            Recortes parciais de materiais autorais e registros de campo desenvolvidos ao longo da carreira.
+                        </p>
                     </div>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                        <div class="aspect-square bg-gray-100 rounded-3xl border border-gray-200 flex items-center justify-center text-gray-300 text-[9px] font-black uppercase text-center p-4">Foto de <br> Treinamento</div>
-                        <div class="aspect-square bg-gray-100 rounded-3xl border border-gray-200 flex items-center justify-center text-gray-300 text-[9px] font-black uppercase text-center p-4">Dinâmica de <br> Grupo</div>
-                        <div class="aspect-square bg-gray-100 rounded-3xl border border-gray-200 flex items-center justify-center text-gray-300 text-[9px] font-black uppercase text-center p-4">Evento de <br> Integração</div>
-                        <div class="aspect-square bg-vibrantOrange/5 rounded-3xl flex items-center justify-center text-vibrantOrange text-2xl font-black">✦</div>
+
+                    <!-- AVISO DE CONFIDENCIALIDADE (DESTAQUE NO TOPO) -->
+                    <div class="bg-white/80 backdrop-blur-md border border-softLilac/30 rounded-3xl p-6 lg:p-8 flex items-start gap-5 shadow-sm">
+                        <div class="w-12 h-12 bg-softLilac text-white rounded-2xl flex items-center justify-center text-xl shrink-0 shadow-md">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="text-sm font-black uppercase tracking-wider text-charcoal">Nota de Sigilo e Confidencialidade Profissional</h3>
+                            <p class="text-xs text-gray-600 font-medium leading-relaxed">
+                                Por motivos de conformidade, compliance e segurança de dados dos clientes e empresas (como Camil Alimentos e C6 Bank), os materiais exibidos nesta galeria constituem <b>prévias parciais e recortes ilustrativos</b>. Números estratégicos, informações proprietárias e dados sensíveis foram rigorosamente omitidos.
+                            </p>
+                        </div>
                     </div>
+
+                    <!-- NOVIDADE: MURAL DE FOTOS INTERATIVO (CARROSSEL / GRID COM HOVER) -->
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-[2px] bg-vibrantOrange"></div>
+                            <h3 class="text-xl lg:text-2xl font-black uppercase tracking-tight text-charcoal">Registros de Campo & Vivências</h3>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Foto 1: Treinamentos -->
+                            <div class="interactive-photo-card bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-md flex flex-col justify-between">
+                                <div class="h-48 bg-purple-100 flex items-center justify-center relative overflow-hidden">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent z-10 flex items-end p-4">
+                                        <span class="text-white text-xs font-black uppercase tracking-wider"><i class="fa-solid fa-chalkboard-user mr-2 text-vibrantOrange"></i> Salas de Treinamento</span>
+                                    </div>
+                                    <div class="text-softLilac text-5xl opacity-40"><i class="fa-solid fa-users-viewfinder"></i></div>
+                                </div>
+                                <div class="p-5 space-y-2">
+                                    <h4 class="text-xs font-black uppercase text-charcoal tracking-wider">Facilitação & Onboarding</h4>
+                                    <p class="text-[11px] text-gray-500 font-medium leading-relaxed">Condução de turmas presenciais e integração de equipes em operações de grande porte.</p>
+                                </div>
+                            </div>
+                            <!-- Foto 2: Workshops -->
+                            <div class="interactive-photo-card bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-md flex flex-col justify-between">
+                                <div class="h-48 bg-orange-100 flex items-center justify-center relative overflow-hidden">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent z-10 flex items-end p-4">
+                                        <span class="text-white text-xs font-black uppercase tracking-wider"><i class="fa-solid fa-lightbulb mr-2 text-vibrantOrange"></i> Workshops de Liderança</span>
+                                    </div>
+                                    <div class="text-vibrantOrange text-5xl opacity-40"><i class="fa-solid fa-handshake-angle"></i></div>
+                                </div>
+                                <div class="p-5 space-y-2">
+                                    <h4 class="text-xs font-black uppercase text-charcoal tracking-wider">Alinhamento Estratégico</h4>
+                                    <p class="text-[11px] text-gray-500 font-medium leading-relaxed">Eventos imersivos com gerentes, coordenadores e stakeholders da indústria.</p>
+                                </div>
+                            </div>
+                            <!-- Foto 3: Rotas de Campo -->
+                            <div class="interactive-photo-card bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-md flex flex-col justify-between">
+                                <div class="h-48 bg-blue-100 flex items-center justify-center relative overflow-hidden">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent z-10 flex items-end p-4">
+                                        <span class="text-white text-xs font-black uppercase tracking-wider"><i class="fa-solid fa-store mr-2 text-brandBlue"></i> Rotas no PDV</span>
+                                    </div>
+                                    <div class="text-brandBlue text-5xl opacity-40"><i class="fa-solid fa-route"></i></div>
+                                </div>
+                                <div class="p-5 space-y-2">
+                                    <h4 class="text-xs font-black uppercase text-charcoal tracking-wider">Vivência com a Equipe de Campo</h4>
+                                    <p class="text-[11px] text-gray-500 font-medium leading-relaxed">Acompanhamento prático da execução no ponto de venda e apoio a promotores.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PILAR 1: TRADE MARKETING & PDV -->
+                    <div class="space-y-6 pt-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-[2px] bg-vibrantOrange"></div>
+                            <h3 class="text-xl lg:text-2xl font-black uppercase tracking-tight text-charcoal">Pillar 1: Trade Marketing & PDV</h3>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Item 1 -->
+                            <div class="bg-white rounded-3xl p-6 text-charcoal shadow-md border border-gray-200 flex flex-col justify-between interactive-photo-card">
+                                <div>
+                                    <span class="text-[9px] font-black uppercase tracking-widest text-vibrantOrange block mb-1">Campanha Nacional</span>
+                                    <h4 class="text-lg font-black uppercase tracking-tight mb-2">Manuais de Execução</h4>
+                                    <p class="text-xs text-gray-600 font-medium leading-relaxed mb-6">Guias rápidos de planogramas, montagem de pontos extras e padronização visual para equipes de campo.</p>
+                                </div>
+                                <div class="bg-gray-50 border border-gray-100 rounded-2xl p-3 text-center text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                                    [ Prévia Protegida ]
+                                </div>
+                            </div>
+                            <!-- Item 2 -->
+                            <div class="bg-white rounded-3xl p-6 text-charcoal shadow-md border border-gray-200 flex flex-col justify-between interactive-photo-card">
+                                <div>
+                                    <span class="text-[9px] font-black uppercase tracking-widest text-vibrantOrange block mb-1">Material de PDV</span>
+                                    <h4 class="text-lg font-black uppercase tracking-tight mb-2">Comunicação Visual de Lojas</h4>
+                                    <p class="text-xs text-gray-600 font-medium leading-relaxed mb-6">Key Visuals, cartazes de categoria e sinalização promocional para ativação de marcas líderes.</p>
+                                </div>
+                                <div class="bg-gray-50 border border-gray-100 rounded-2xl p-3 text-center text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                                    [ Prévia Protegida ]
+                                </div>
+                            </div>
+                            <!-- Item 3 -->
+                            <div class="bg-white rounded-3xl p-6 text-charcoal shadow-md border border-gray-200 flex flex-col justify-between interactive-photo-card">
+                                <div>
+                                    <span class="text-[9px] font-black uppercase tracking-widest text-vibrantOrange block mb-1">Incentivo & Metas</span>
+                                    <h4 class="text-lg font-black uppercase tracking-tight mb-2">Campanhas de Premiação</h4>
+                                    <p class="text-xs text-gray-600 font-medium leading-relaxed mb-6">Peças de engajamento para promotores com foco em atingimento de sell-out e exposição perfeita.</p>
+                                </div>
+                                <div class="bg-gray-50 border border-gray-100 rounded-2xl p-3 text-center text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                                    [ Prévia Protegida ]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PILAR 2: TREINAMENTO & EAD / LMS -->
+                    <div class="space-y-6 pt-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-[2px] bg-softLilac"></div>
+                            <h3 class="text-xl lg:text-2xl font-black uppercase tracking-tight text-charcoal">Pillar 2: Educação Corporativa & LMS</h3>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Item 1 -->
+                            <div class="bg-white rounded-3xl p-6 text-charcoal shadow-md border border-gray-200 flex flex-col justify-between interactive-photo-card">
+                                <div>
+                                    <span class="text-[9px] font-black uppercase tracking-widest text-softLilac block mb-1">Trilhas de Aprendizagem</span>
+                                    <h4 class="text-lg font-black uppercase tracking-tight mb-2">Onboarding Estruturado</h4>
+                                    <p class="text-xs text-gray-600 font-medium leading-relaxed mb-6">Módulos interativos para aceleração de ramp-up em operações bancárias de alta complexidade.</p>
+                                </div>
+                                <div class="bg-gray-50 border border-gray-100 rounded-2xl p-3 text-center text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                                    [ Prévia Protegida ]
+                                </div>
+                            </div>
+                            <!-- Item 2 -->
+                            <div class="bg-white rounded-3xl p-6 text-charcoal shadow-md border border-gray-200 flex flex-col justify-between interactive-photo-card">
+                                <div>
+                                    <span class="text-[9px] font-black uppercase tracking-widest text-softLilac block mb-1">Gamificação</span>
+                                    <h4 class="text-lg font-black uppercase tracking-tight mb-2">Quizzes & Badges LMS</h4>
+                                    <p class="text-xs text-gray-600 font-medium leading-relaxed mb-6">Dinâmicas de pontuação e desafios educacionais aplicados em plataformas proprietárias.</p>
+                                </div>
+                                <div class="bg-gray-50 border border-gray-100 rounded-2xl p-3 text-center text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                                    [ Prévia Protegida ]
+                                </div>
+                            </div>
+                            <!-- Item 3 -->
+                            <div class="bg-white rounded-3xl p-6 text-charcoal shadow-md border border-gray-200 flex flex-col justify-between interactive-photo-card">
+                                <div>
+                                    <span class="text-[9px] font-black uppercase tracking-widest text-softLilac block mb-1">Desenvolvimento de Líderes</span>
+                                    <h4 class="text-lg font-black uppercase tracking-tight mb-2">Workshops & Manuais</h4>
+                                    <p class="text-xs text-gray-600 font-medium leading-relaxed mb-6">Material didático focado em gestão de equipes, indicadores de performance e feedback construtivo.</p>
+                                </div>
+                                <div class="bg-gray-50 border border-gray-100 rounded-2xl p-3 text-center text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                                    [ Prévia Protegida ]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PILAR 3: COMUNICAÇÃO INTERNA & JORNAIS -->
+                    <div class="space-y-6 pt-4 pb-10">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-[2px] bg-brandBlue"></div>
+                            <h3 class="text-xl lg:text-2xl font-black uppercase tracking-tight text-charcoal">Pillar 3: Comunicação Interna & Jornais</h3>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Item 1 -->
+                            <div class="bg-white rounded-3xl p-6 text-charcoal shadow-md border border-gray-200 flex flex-col justify-between interactive-photo-card">
+                                <div>
+                                    <span class="text-[9px] font-black uppercase tracking-widest text-brandBlue block mb-1">Jornal Quinzenal</span>
+                                    <h4 class="text-lg font-black uppercase tracking-tight mb-2">Execução News (90 Edições)</h4>
+                                    <p class="text-xs text-gray-600 font-medium leading-relaxed mb-6">Veículo interno de notícias, engajamento e celebração das fotos e conquistas enviadas pelas equipes de campo.</p>
+                                </div>
+                                <div class="bg-gray-50 border border-gray-100 rounded-2xl p-3 text-center text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                                    [ Prévia Protegida ]
+                                </div>
+                            </div>
+                            <!-- Item 2 -->
+                            <div class="bg-white rounded-3xl p-6 text-charcoal shadow-md border border-gray-200 flex flex-col justify-between interactive-photo-card">
+                                <div>
+                                    <span class="text-[9px] font-black uppercase tracking-widest text-brandBlue block mb-1">Newsletters & Avisos</span>
+                                    <h4 class="text-lg font-black uppercase tracking-tight mb-2">Comunicados Operacionais</h4>
+                                    <p class="text-xs text-gray-600 font-medium leading-relaxed mb-6">Peças de comunicação rápida para TVs corporativas e murais digitais, garantindo alinhamento de processos.</p>
+                                </div>
+                                <div class="bg-gray-50 border border-gray-100 rounded-2xl p-3 text-center text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                                    [ Prévia Protegida ]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
