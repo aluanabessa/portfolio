@@ -102,19 +102,13 @@
         .card-floating { animation: float-gentle 5s ease-in-out infinite; }
         .card-floating-delayed { animation: float-gentle 5s ease-in-out infinite 2.5s; }
 
-        .interactive-photo-card {
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Estilos dos Álbuns Internos */
+        .inner-album { position: relative; width: 100%; height: 100%; }
+        .album-item { 
+            position: absolute; inset: 0; width: 100%; height: 100%; 
+            opacity: 0; transition: opacity 0.8s ease-in-out; object-fit: cover; border-radius: 1.5rem;
         }
-        .interactive-photo-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 35px rgba(157, 78, 221, 0.2);
-        }
-        .interactive-photo-card:hover img {
-            transform: scale(1.08);
-        }
-        .interactive-photo-card img {
-            transition: transform 0.6s ease;
-        }
+        .album-item.active-item { opacity: 1; z-index: 10; }
     </style>
 </head>
 <body class="font-sans antialiased text-charcoal">
@@ -324,7 +318,7 @@
                         <div class="space-y-4">
                             <h4 class="text-xs font-black text-charcoal uppercase tracking-widest border-l-4 border-vibrantOrange pl-3">Minha Atuação</h4>
                             <p class="text-sm font-medium text-gray-600 leading-relaxed">
-                                Atuei na construção de soluções de desenvolvimento para diferentes públicos da operação, abrangendo colaboradores da indústria e equipes da agência, com foco em transformar direcionamentos estratégicos em conhecimento aplicável à rotina do PDV.
+                                Atuei na construção de soluções de desenvolvimento para differentes públicos da operação, abrangendo colaboradores da indústria e equipes da agência, com foco em transformar direcionamentos estratégicos em conhecimento aplicável à rotina do PDV.
                             </p>
                             <p class="text-sm font-medium text-gray-600 leading-relaxed">
                                 Desenvolvi e estruturei trilhas de aprendizagem para promotores e lideranças, considerando differentes níveis de atuação, regionalidades e necessidades do negócio. O trabalho abrangia <b>8 categorias e 21 famílias de produtos</b>, exigindo a tradução de características, estratégias comerciais e direcionamentos de execução em conteúdos objetivos, didáticos e aplicáveis à realidade das lojas.
@@ -658,7 +652,7 @@
                         </p>
                     </div>
 
-                    <!-- LINHA 1 (Cards com efeito de movimento igual aos cards de contato - Imagem 4) -->
+                    <!-- LINHA 1 -->
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
                         <div class="animated-card lg:col-span-5 shadow-md" style="--border-color: #0052CC;">
                             <div class="card-inner bg-camilIce p-6 lg:p-8 flex flex-col justify-between relative overflow-hidden group">
@@ -739,7 +733,7 @@
                         </div>
                     </div>
 
-                    <!-- LINHA 2 (Card com efeito de movimento igual aos cards de contato - Imagem 4) -->
+                    <!-- LINHA 2 -->
                     <div class="animated-card mb-6 case-shadow" style="--border-color: #FF6B35;">
                         <div class="card-inner bg-camilIce p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 relative overflow-hidden items-center">
                             <div class="lg:col-span-7 relative z-10">
@@ -783,7 +777,7 @@
                         </div>
                     </div>
 
-                    <!-- LINHA 3 (Cards com efeito flutuante - Imagem 3) -->
+                    <!-- LINHA 3 -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6 items-center">
                         <div class="relative flex flex-col items-center justify-center gap-6 py-4 w-full">
                             <div class="bg-white rounded-[2rem] p-6 lg:p-8 shadow-xl border border-gray-100 w-full z-10 card-floating">
@@ -854,7 +848,7 @@
                         </div>
                     </div>
 
-                    <!-- CARD: EXECUÇÃO NEWS (Contorno e título em Azul) -->
+                    <!-- EXECUÇÃO NEWS -->
                     <div class="bg-white rounded-[2rem] p-6 lg:p-8 mt-6 mb-6 shadow-xl border-2 border-brandBlue relative overflow-hidden flex flex-col lg:flex-row gap-8 items-center">
                         <div class="flex-1 relative z-10 w-full">
                             <div class="flex items-center gap-3 mb-4">
@@ -879,17 +873,18 @@
                             </div>
                         </div>
                         <div class="w-full lg:w-[45%] rounded-2xl p-4 bg-white shadow-sm flex flex-col justify-between space-y-3 relative z-10 shrink-0">
-                            <div class="flex items-center justify-between">
-                                <span class="text-[10px] font-black uppercase text-charcoal tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-images text-brandBlue"></i> Prévia do Material</span>
-                                <a href="https://www.canva.com/design/DAHPsK8dIEc/7Vx1VFDKg1OC8aF-d1yX9g/view" target="_blank" class="text-[9px] font-extrabold text-brandBlue hover:underline flex items-center gap-1">Abrir Canva <i class="fa-solid fa-external-link-alt text-[8px]"></i></a>
+                            <div style="position: relative; width: 100%; height: 0; padding-top: 141.8919%;
+                             padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+                             border-radius: 8px; will-change: transform;">
+                              <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                                src="https://www.canva.com/design/DAHPsK8dIEc/7Vx1VFDKg1OC8aF-d1yX9g/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+                              </iframe>
                             </div>
-                            <div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-gray-100 shadow-inner">
-                                <iframe loading="lazy" class="absolute inset-0 w-full h-full border-none" src="https://www.canva.com/design/DAHPsK8dIEc/7Vx1VFDKg1OC8aF-d1yX9g/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
-                            </div>
+                            <a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAHPsK8dIEc&#x2F;7Vx1VFDKg1OC8aF-d1yX9g&#x2F;view?utm_content=DAHPsK8dIEc&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Design</a> de Luana Mattos
                         </div>
                     </div>
 
-                    <!-- NOVO CARD: TMA -->
+                    <!-- TMA -->
                     <div class="bg-white rounded-[2rem] p-5 lg:p-6 mt-6 mb-6 shadow-md border-2 border-black relative overflow-hidden flex flex-col lg:flex-row gap-6 items-center">
                         <div class="flex-1 relative z-10 w-full">
                             <div class="flex items-center gap-3 mb-3">
@@ -915,13 +910,14 @@
                             </div>
                         </div>
                         <div class="w-full lg:w-[40%] rounded-2xl p-3 bg-white shadow-sm flex flex-col justify-between space-y-2 relative z-10 shrink-0">
-                            <div class="flex items-center justify-between">
-                                <span class="text-[9px] font-black uppercase text-charcoal tracking-wider flex items-center gap-1"><i class="fa-solid fa-images text-gray-500"></i> Prévia do Material</span>
-                                <a href="https://www.canva.com/design/DAFdTCr7JnE/kwTLXW8UsJEO6NEqwpiy4g/view" target="_blank" class="text-[9px] font-extrabold text-gray-600 hover:underline flex items-center gap-1">Abrir Canva <i class="fa-solid fa-external-link-alt text-[8px]"></i></a>
+                            <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+                             padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+                             border-radius: 8px; will-change: transform;">
+                              <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                                src="https://www.canva.com/design/DAFdTCr7JnE/kwTLXW8UsJEO6NEqwpiy4g/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+                              </iframe>
                             </div>
-                            <div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-gray-100 shadow-inner">
-                                <iframe loading="lazy" class="absolute inset-0 w-full h-full border-none" src="https://www.canva.com/design/DAFdTCr7JnE/kwTLXW8UsJEO6NEqwpiy4g/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
-                            </div>
+                            <a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFdTCr7JnE&#x2F;kwTLXW8UsJEO6NEqwpiy4g&#x2F;view?utm_content=DAFdTCr7JnE&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Qual é o artigo?</a> de Luana Mattos
                         </div>
                     </div>
 
@@ -969,7 +965,7 @@
                                     <div class="header-contact-inner"><i class="fa-brands fa-linkedin-in text-sm text-[#0077B5]"></i></div>
                                 </a>
                             </div>
-                            <button class="bg-charcoal text-white px-6 py-3 rounded-xl font-black text-[9px] uppercase tracking-widest hover:bg-vibrantOrange transition-all shadow-lg">Baixar PDF ↓</button>
+                            <a href="./curriculo_aluanabessa.pdf" download="curriculo_aluanabessa.pdf" class="bg-charcoal text-white px-6 py-3 rounded-xl font-black text-[9px] uppercase tracking-widest hover:bg-vibrantOrange transition-all shadow-lg inline-block">Baixar PDF ↓</a>
                         </div>
                     </div>
                 </div>
@@ -1219,51 +1215,113 @@
                         </div>
                     </div>
 
-                    <!-- MURAL DE FOTOS INTERATIVO -->
-                    <div class="space-y-6">
+                    <!-- CARROSSEL REGISTROS DE CAMPO & VIVÊNCIAS -->
+                    <div class="space-y-6 pt-4">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-[2px] bg-vibrantOrange"></div>
                             <h3 class="text-xl lg:text-2xl font-black uppercase tracking-tight text-charcoal">Registros de Campo & Vivências</h3>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <!-- Foto 1 -->
-                            <div class="interactive-photo-card bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-md flex flex-col justify-between">
-                                <div class="h-48 bg-purple-100 flex items-center justify-center relative overflow-hidden">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent z-10 flex items-end p-4">
-                                        <span class="text-white text-xs font-black uppercase tracking-wider"><i class="fa-solid fa-chalkboard-user mr-2 text-vibrantOrange"></i> Salas de Treinamento</span>
+                        
+                        <div class="relative overflow-hidden bg-white rounded-[2.5rem] shadow-xl border border-gray-200 p-6 lg:p-10 group" id="carousel-container">
+                            <!-- Slides Track -->
+                            <div class="flex transition-transform duration-700 ease-in-out" id="carousel-track">
+                                
+                                <!-- Slide 1: Salas de Treinamento (Álbum Onboarding) -->
+                                <div class="min-w-full flex flex-col lg:flex-row items-center gap-8 px-2">
+                                    <div class="w-full lg:w-1/2 h-64 lg:h-80 bg-gray-100 rounded-3xl overflow-hidden relative shadow-inner">
+                                        <!-- Container do Álbum Interno (com ID para o Javascript) -->
+                                        <div class="inner-album" id="album-onboarding">
+                                            <!-- 1) Capa do Álbum (Aparece primeiro) -->
+                                            <div class="album-item active-item bg-purple-100 flex items-center justify-center flex-col relative overflow-hidden">
+                                                <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent z-10 flex items-end p-4">
+                                                    <span class="text-white text-xs font-black uppercase tracking-wider"><i class="fa-solid fa-chalkboard-user mr-2 text-vibrantOrange"></i> Salas de Treinamento</span>
+                                                </div>
+                                                <div class="text-softLilac text-7xl opacity-40"><i class="fa-solid fa-users-viewfinder"></i></div>
+                                            </div>
+                                            <!-- As imagens numeradas (1.jpg, 2.jpg...) serão geradas via Javascript -->
+                                        </div>
                                     </div>
-                                    <div class="text-softLilac text-5xl opacity-40"><i class="fa-solid fa-users-viewfinder"></i></div>
+                                    <div class="w-full lg:w-1/2 space-y-4">
+                                        <span class="text-[10px] font-black text-softLilac uppercase tracking-widest block"><i class="fa-solid fa-chalkboard-user mr-1"></i> Salas de Treinamento</span>
+                                        <h4 class="text-2xl lg:text-3xl font-black uppercase tracking-tight text-charcoal">Facilitação & Onboarding</h4>
+                                        <p class="text-sm font-medium text-gray-600 leading-relaxed">
+                                            Condução de turmas presenciais, integração de equipes em operações de grande porte e facilitação de dinâmicas focadas em engajamento e assimilação técnica.
+                                        </p>
+                                        <div class="flex items-center gap-2 text-xs font-bold text-vibrantOrange">
+                                            <i class="fa-solid fa-circle-check"></i> Experiência presencial e imersiva
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="p-5 space-y-2">
-                                    <h4 class="text-xs font-black uppercase text-charcoal tracking-wider">Facilitação & Onboarding</h4>
-                                    <p class="text-[11px] text-gray-500 font-medium leading-relaxed">Condução de turmas presenciais e integração de equipes em operações de grande porte.</p>
+
+                                <!-- Slide 2: Workshops de Liderança (Álbum Workshop) -->
+                                <div class="min-w-full flex flex-col lg:flex-row items-center gap-8 px-2">
+                                    <div class="w-full lg:w-1/2 h-64 lg:h-80 bg-gray-100 rounded-3xl overflow-hidden relative shadow-inner">
+                                        <!-- Container do Álbum Interno (com ID para o Javascript) -->
+                                        <div class="inner-album" id="album-workshop">
+                                            <!-- 1) Capa do Álbum (Aparece primeiro) -->
+                                            <div class="album-item active-item bg-orange-100 flex items-center justify-center flex-col relative overflow-hidden">
+                                                <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent z-10 flex items-end p-4">
+                                                    <span class="text-white text-xs font-black uppercase tracking-wider"><i class="fa-solid fa-lightbulb mr-2 text-vibrantOrange"></i> Workshops de Liderança</span>
+                                                </div>
+                                                <div class="text-vibrantOrange text-7xl opacity-40"><i class="fa-solid fa-handshake-angle"></i></div>
+                                            </div>
+                                            <!-- As imagens numeradas (1.jpg, 2.jpg...) serão geradas via Javascript -->
+                                        </div>
+                                    </div>
+                                    <div class="w-full lg:w-1/2 space-y-4">
+                                        <span class="text-[10px] font-black text-vibrantOrange uppercase tracking-widest block"><i class="fa-solid fa-lightbulb mr-1"></i> Workshops de Liderança</span>
+                                        <h4 class="text-2xl lg:text-3xl font-black uppercase tracking-tight text-charcoal">Alinhamento Estratégico</h4>
+                                        <p class="text-sm font-medium text-gray-600 leading-relaxed">
+                                            Eventos imersivos com gerentes, coordenadores e stakeholders da indústria, alinhando diretrizes corporativas e fortalecendo a cultura de gestão.
+                                        </p>
+                                        <div class="flex items-center gap-2 text-xs font-bold text-vibrantOrange">
+                                            <i class="fa-solid fa-circle-check"></i> Conexão entre indústria e campo
+                                        </div>
+                                    </div>
                                 </div>
+
+                                <!-- Slide 3: Rotas no PDV (Álbum Em Campo) -->
+                                <div class="min-w-full flex flex-col lg:flex-row items-center gap-8 px-2">
+                                    <div class="w-full lg:w-1/2 h-64 lg:h-80 bg-gray-100 rounded-3xl overflow-hidden relative shadow-inner">
+                                        <!-- Container do Álbum Interno (com ID para o Javascript) -->
+                                        <div class="inner-album" id="album-emcampo">
+                                            <!-- 1) Capa do Álbum (Aparece primeiro) -->
+                                            <div class="album-item active-item bg-blue-100 flex items-center justify-center flex-col relative overflow-hidden">
+                                                <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent z-10 flex items-end p-4">
+                                                    <span class="text-white text-xs font-black uppercase tracking-wider"><i class="fa-solid fa-store mr-2 text-brandBlue"></i> Rotas no PDV</span>
+                                                </div>
+                                                <div class="text-brandBlue text-7xl opacity-40"><i class="fa-solid fa-route"></i></div>
+                                            </div>
+                                            <!-- As imagens numeradas (1.jpg, 2.jpg...) serão geradas via Javascript -->
+                                        </div>
+                                    </div>
+                                    <div class="w-full lg:w-1/2 space-y-4">
+                                        <span class="text-[10px] font-black text-brandBlue uppercase tracking-widest block"><i class="fa-solid fa-store mr-1"></i> Rotas no PDV</span>
+                                        <h4 class="text-2xl lg:text-3xl font-black uppercase tracking-tight text-charcoal">Vivência com a Equipe de Campo</h4>
+                                        <p class="text-sm font-medium text-gray-600 leading-relaxed">
+                                            Acompanhamento prático da execução no ponto de venda, apoio a promotores e validação de planogramas e estratégias de Trade Marketing.
+                                        </p>
+                                        <div class="flex items-center gap-2 text-xs font-bold text-brandBlue">
+                                            <i class="fa-solid fa-circle-check"></i> Prática real e auditoria de loja
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <!-- Foto 2 -->
-                            <div class="interactive-photo-card bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-md flex flex-col justify-between">
-                                <div class="h-48 bg-orange-100 flex items-center justify-center relative overflow-hidden">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent z-10 flex items-end p-4">
-                                        <span class="text-white text-xs font-black uppercase tracking-wider"><i class="fa-solid fa-lightbulb mr-2 text-vibrantOrange"></i> Workshops de Liderança</span>
-                                    </div>
-                                    <div class="text-vibrantOrange text-5xl opacity-40"><i class="fa-solid fa-handshake-angle"></i></div>
-                                </div>
-                                <div class="p-5 space-y-2">
-                                    <h4 class="text-xs font-black uppercase text-charcoal tracking-wider">Alinhamento Estratégico</h4>
-                                    <p class="text-[11px] text-gray-500 font-medium leading-relaxed">Eventos imersivos com gerentes, coordenadores e stakeholders da indústria.</p>
-                                </div>
-                            </div>
-                            <!-- Foto 3 -->
-                            <div class="interactive-photo-card bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-md flex flex-col justify-between">
-                                <div class="h-48 bg-blue-100 flex items-center justify-center relative overflow-hidden">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent z-10 flex items-end p-4">
-                                        <span class="text-white text-xs font-black uppercase tracking-wider"><i class="fa-solid fa-store mr-2 text-brandBlue"></i> Rotas no PDV</span>
-                                    </div>
-                                    <div class="text-brandBlue text-5xl opacity-40"><i class="fa-solid fa-route"></i></div>
-                                </div>
-                                <div class="p-5 space-y-2">
-                                    <h4 class="text-xs font-black uppercase text-charcoal tracking-wider">Vivência com a Equipe de Campo</h4>
-                                    <p class="text-[11px] text-gray-500 font-medium leading-relaxed">Acompanhamento prático da execução no ponto de venda e apoio a promotores.</p>
-                                </div>
+
+                            <!-- Botões de Navegação Manual -->
+                            <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 bg-white/90 hover:bg-white text-charcoal shadow-lg rounded-full flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 hover:scale-110 z-20">
+                                <i class="fa-solid fa-chevron-left text-sm"></i>
+                            </button>
+                            <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 bg-white/90 hover:bg-white text-charcoal shadow-lg rounded-full flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 hover:scale-110 z-20">
+                                <i class="fa-solid fa-chevron-right text-sm"></i>
+                            </button>
+
+                            <!-- Indicadores (Bolinhas) -->
+                            <div class="flex justify-center items-center gap-2 mt-8">
+                                <button onclick="currentSlide(0)" class="carousel-dot w-8 h-3 rounded-full bg-softLilac transition-all" aria-label="Slide 1"></button>
+                                <button onclick="currentSlide(1)" class="carousel-dot w-3 h-3 rounded-full bg-gray-300 transition-all" aria-label="Slide 2"></button>
+                                <button onclick="currentSlide(2)" class="carousel-dot w-3 h-3 rounded-full bg-gray-300 transition-all" aria-label="Slide 3"></button>
                             </div>
                         </div>
                     </div>
@@ -1610,6 +1668,118 @@
             });
         }
 
+        // 1) SCRIPT DO CARROSSEL PRINCIPAL (Alterna os temas a cada 6s)
+        let currentIndex = 0;
+        const totalSlides = 3;
+        let slideInterval;
+
+        function updateCarousel() {
+            const track = document.getElementById('carousel-track');
+            if (!track) return;
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.classList.remove('bg-gray-300', 'w-3');
+                    dot.classList.add('bg-softLilac', 'w-8');
+                } else {
+                    dot.classList.remove('bg-softLilac', 'w-8');
+                    dot.classList.add('bg-gray-300', 'w-3');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function currentSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+            resetTimer();
+        }
+
+        function startTimer() {
+            slideInterval = setInterval(nextSlide, 6000); // 6 segundos por tema
+        }
+
+        function resetTimer() {
+            clearInterval(slideInterval);
+            startTimer();
+        }
+
+        // 2) SCRIPT DOS ÁLBUNS DE FOTOS INTERNOS (Alterna as fotos a cada 3,5s)
+        function startInnerAlbums() {
+            setInterval(() => {
+                document.querySelectorAll('.inner-album').forEach(album => {
+                    const items = album.querySelectorAll('.album-item');
+                    if(items.length <= 1) return; // Se tiver só a capa, não faz nada
+                    
+                    let activeIdx = Array.from(items).findIndex(item => item.classList.contains('active-item'));
+                    if(activeIdx === -1) activeIdx = 0; // Prevenção de erro
+                    
+                    // Esconde a atual
+                    items[activeIdx].classList.remove('active-item');
+                    
+                    // Próxima foto
+                    let nextIdx = (activeIdx + 1) % items.length;
+                    items[nextIdx].classList.add('active-item');
+                });
+            }, 3500); // 3,5 segundos por foto do álbum
+        }
+
+        // 3) SCRIPT PARA CARREGAR FOTOS AUTOMATICAMENTE DAS PASTAS
+        function autoLoadAlbums() {
+            const albunsConfig = [
+                { id: 'album-onboarding', folder: './images_onboarding' },
+                { id: 'album-workshop', folder: './images_workshop' },
+                { id: 'album-emcampo', folder: './images_emcampo' }
+            ];
+
+            // Quantidade máxima de fotos que o código vai tentar carregar (pode aumentar se tiver mais fotos)
+            const maxFotos = 30; 
+
+            albunsConfig.forEach(config => {
+                const albumContainer = document.getElementById(config.id);
+                if(!albumContainer) return;
+
+                for(let i = 1; i <= maxFotos; i++) {
+                    let img = document.createElement('img');
+                    // Tenta carregar fotos com extensão .jpg 
+                    img.src = `${config.folder}/${i}.jpg`;
+                    img.className = "album-item";
+                    img.alt = `Registro ${i}`;
+                    
+                    // Se a imagem não for encontrada na pasta, remove do HTML silenciosamente
+                    img.onerror = function() {
+                        this.remove();
+                    };
+                    
+                    albumContainer.appendChild(img);
+                }
+            });
+        }
+
+        // Inicializar os Carrosseis quando a página carrega
+        window.addEventListener('DOMContentLoaded', () => {
+            updateCarousel();
+            startTimer();
+            autoLoadAlbums(); // Carrega as fotos numeradas (1.jpg, 2.jpg...)
+            startInnerAlbums(); // Inicia as fotos dos álbuns
+            
+            const container = document.getElementById('carousel-container');
+            if (container) {
+                // Pausa o carrossel de TEMAS quando passa o mouse (as fotos dentro continuam rodando)
+                container.addEventListener('mouseenter', () => clearInterval(slideInterval));
+                container.addEventListener('mouseleave', () => startTimer());
+            }
+        });
+
         const contentData = {
             lms: {
                 tag: 'IMPLANTAÇÃO DE PLATAFORMAS & CULTURA EAD',
@@ -1831,7 +2001,7 @@
                         <a href="https://www.instagram.com/Urbanpulsepercussion" target="_blank" class="bg-softLilac text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-purple-700 transition-colors inline-flex items-center gap-2">Ver Instagram <i class="fa-brands fa-instagram"></i></a>
                     </div>
                     <p class="text-sm lg:text-base font-medium text-gray-700 leading-relaxed">
-                        Atuação voluntária há mais de 2 anos na liderança, coordenação e design instrucional de ensaios de percussão rudimentar (<i>drumline</i>) para turmas diversas de adolescentes e jovens adultos.
+                        Atuação voluntária há mais de 2 anos na liderança, coordenação e design instrucional de ensaios de percussão rudimentar (<i>drumline</i>) para turmas diversas de adolescentes e jovens adultos. <b>Laboratório de soft skills, sucessão de liderança e facilitação de grandes grupos</b>.
                     </p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="bg-white border border-gray-200 p-5 rounded-2xl shadow-xs">
@@ -1844,63 +2014,62 @@
                         </div>
                     </div>
 
-                    <div class="pt-6 border-t border-gray-200 space-y-6">
-                        <h4 class="text-xs font-black uppercase text-charcoal tracking-widest flex items-center gap-2"><i class="fa-solid fa-award text-softLilac"></i> Prévia dos Materiais & Prêmios do Projeto</h4>
-                        
-                        <!-- Material 1 -->
-                        <div class="border border-gray-200 rounded-3xl p-5 bg-white shadow-sm space-y-3">
-                            <div class="flex items-center justify-between">
-                                <span class="text-[10px] font-black uppercase text-charcoal tracking-wider">PREMIO URBAN</span>
-                                <a href="https://www.canva.com/design/DAG7bT1o_qs/j1-KV-CdUYtpWA-YIMLuYg/view?utm_content=DAG7bT1o_qs&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener" class="text-[9px] font-extrabold text-softLilac hover:underline flex items-center gap-1">Abrir Canva <i class="fa-solid fa-external-link-alt text-[8px]"></i></a>
+                    <!-- MATERIAIS INSERIDOS - FORMATO UNIFICADO -->
+                    <div class="pt-6 border-t border-gray-100">
+                        <h4 class="text-xs font-black uppercase text-charcoal tracking-widest flex items-center gap-2 mb-4"><i class="fa-solid fa-folder-open text-softLilac"></i> Materiais do Projeto</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                            
+                            <div class="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm flex flex-col justify-between space-y-3 hover:shadow-md transition-shadow">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-[10px] font-black uppercase text-charcoal tracking-wider truncate">Prêmio Urban (Reels)</span>
+                                    <a href="https://www.canva.com/design/DAG7bT1o_qs/j1-KV-CdUYtpWA-YIMLuYg/view" target="_blank" class="text-[9px] font-extrabold text-softLilac hover:underline flex items-center gap-1 shrink-0">Ver Canva <i class="fa-solid fa-external-link-alt text-[8px]"></i></a>
+                                </div>
+                                <div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden bg-gray-50 shadow-inner">
+                                    <iframe loading="lazy" class="absolute inset-0 w-full h-full border-none" src="https://www.canva.com/design/DAG7bT1o_qs/j1-KV-CdUYtpWA-YIMLuYg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+                                </div>
                             </div>
-                            <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 0.5em; margin-bottom: 0.5em; overflow: hidden; border-radius: 8px; will-change: transform;">
-                                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0;" src="https://www.canva.com/design/DAG7bT1o_qs/j1-KV-CdUYtpWA-YIMLuYg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
-                            </div>
-                            <p class="text-[11px] font-medium text-gray-500"><b>PREMIO URBAN</b> de Luana Mattos</p>
-                        </div>
 
-                        <!-- Material 2 -->
-                        <div class="border border-gray-200 rounded-3xl p-5 bg-white shadow-sm space-y-3">
-                            <div class="flex items-center justify-between">
-                                <span class="text-[10px] font-black uppercase text-charcoal tracking-wider">Identity Card - Urban Pulse</span>
-                                <a href="https://www.canva.com/design/DAGrG-cVglc/_hSl-2EwscUXQTeB-rkxZg/view?utm_content=DAGrG-cVglc&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener" class="text-[9px] font-extrabold text-softLilac hover:underline flex items-center gap-1">Abrir Canva <i class="fa-solid fa-external-link-alt text-[8px]"></i></a>
+                            <div class="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm flex flex-col justify-between space-y-3 hover:shadow-md transition-shadow">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-[10px] font-black uppercase text-charcoal tracking-wider truncate">Prêmio Urban (Post)</span>
+                                    <a href="https://www.canva.com/design/DAG7ZUbV90U/zQaju0MMITv1f2r-LTPCow/view" target="_blank" class="text-[9px] font-extrabold text-softLilac hover:underline flex items-center gap-1 shrink-0">Ver Canva <i class="fa-solid fa-external-link-alt text-[8px]"></i></a>
+                                </div>
+                                <div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden bg-gray-50 shadow-inner">
+                                    <iframe loading="lazy" class="absolute inset-0 w-full h-full border-none" src="https://www.canva.com/design/DAG7ZUbV90U/zQaju0MMITv1f2r-LTPCow/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+                                </div>
                             </div>
-                            <div style="position: relative; width: 100%; height: 0; padding-top: 170.0000%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 0.5em; margin-bottom: 0.5em; overflow: hidden; border-radius: 8px; will-change: transform;">
-                                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0;" src="https://www.canva.com/design/DAGrG-cVglc/_hSl-2EwscUXQTeB-rkxZg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
-                            </div>
-                            <p class="text-[11px] font-medium text-gray-500"><b>Identity Card - Urban Pulse</b> de Luana Mattos</p>
-                        </div>
 
-                        <!-- Material 3 -->
-                        <div class="border border-gray-200 rounded-3xl p-5 bg-white shadow-sm space-y-3">
-                            <div class="flex items-center justify-between">
-                                <span class="text-[10px] font-black uppercase text-charcoal tracking-wider">PRêMIO URBAN</span>
-                                <a href="https://www.canva.com/design/DAG7ZUbV90U/zQaju0MMITv1f2r-LTPCow/view?utm_content=DAG7ZUbV90U&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener" class="text-[9px] font-extrabold text-softLilac hover:underline flex items-center gap-1">Abrir Canva <i class="fa-solid fa-external-link-alt text-[8px]"></i></a>
+                            <div class="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm flex flex-col justify-between space-y-3 hover:shadow-md transition-shadow">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-[10px] font-black uppercase text-charcoal tracking-wider truncate">Identity Card</span>
+                                    <a href="https://www.canva.com/design/DAGrG-cVglc/_hSl-2EwscUXQTeB-rkxZg/view" target="_blank" class="text-[9px] font-extrabold text-softLilac hover:underline flex items-center gap-1 shrink-0">Ver Canva <i class="fa-solid fa-external-link-alt text-[8px]"></i></a>
+                                </div>
+                                <div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden bg-gray-50 shadow-inner">
+                                    <iframe loading="lazy" class="absolute inset-0 w-full h-full border-none" src="https://www.canva.com/design/DAGrG-cVglc/_hSl-2EwscUXQTeB-rkxZg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+                                </div>
                             </div>
-                            <div style="position: relative; width: 100%; height: 0; padding-top: 150.0000%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 0.5em; margin-bottom: 0.5em; overflow: hidden; border-radius: 8px; will-change: transform;">
-                                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0;" src="https://www.canva.com/design/DAG7ZUbV90U/zQaju0MMITv1f2r-LTPCow/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
-                            </div>
-                            <p class="text-[11px] font-medium text-gray-500"><b>PRêMIO URBAN</b> de Luana Mattos</p>
+
                         </div>
                     </div>
-                </div>
-                `
+                </div>`
             }
         };
 
         function openCaseInfo(id) {
             const data = contentData[id];
-            if (data) {
-                document.getElementById('modalTag').innerText = data.tag;
-                document.getElementById('mTitle').innerHTML = data.t;
-                document.getElementById('mResult').innerHTML = data.r;
-                document.getElementById('caseModal').classList.remove('hidden');
-                document.getElementById('caseModal').classList.add('flex');
-            }
+            if (!data) return;
+            document.getElementById('modalTag').innerText = data.tag;
+            document.getElementById('mTitle').innerText = data.t;
+            document.getElementById('mResult').innerHTML = data.r;
+            document.getElementById('caseModal').classList.remove('hidden');
+            document.getElementById('caseModal').classList.add('flex');
+            document.body.style.overflow = 'hidden';
         }
+
         function closeCase() {
             document.getElementById('caseModal').classList.add('hidden');
             document.getElementById('caseModal').classList.remove('flex');
+            document.body.style.overflow = 'auto';
         }
     </script>
 </body>
