@@ -106,7 +106,7 @@
         .inner-album { position: relative; width: 100%; height: 100%; }
         .album-item { 
             position: absolute; inset: 0; width: 100%; height: 100%; 
-            opacity: 0; transition: opacity 0.8s ease-in-out; object-fit: cover; border-radius: 1.5rem;
+            opacity: 0; transition: opacity 0.6s ease-in-out; object-fit: cover; border-radius: 1.5rem;
         }
         .album-item.active-item { opacity: 1; z-index: 10; }
     </style>
@@ -746,7 +746,7 @@
                                     <span class="text-softLilac">Regionalizados</span>
                                 </h3>
                                 <p class="text-xs sm:text-sm font-medium text-gray-600 leading-relaxed mt-4 pr-0 lg:pr-4">
-                                    Criação estratégica de materiais de treinamento desenvolvidos de forma customizada para <b>8 regionais diferentes</b>, garantindo um impacto assertivo e alinhado às especificidades de cada localidade, focando em categorias e estratégias como <i>Execução Perfeita</i> e <i>Loja Perfeita</i>.
+                                    Criação estratégica de materiais de treinamento desenvolvidos de forma customizada para <b>8 regionalidades diferentes</b>, garantindo um impacto assertivo e alinhado às especificidades de cada localidade, focando em categorias e estratégias como <i>Execução Perfeita</i> e <i>Loja Perfeita</i>.
                                 </p>
                                 <button onclick="openCaseInfo('mensais_regional')" class="mt-8 w-full bg-softLilac text-white rounded-xl py-3.5 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-purple-700 transition-all shadow-md flex items-center justify-center gap-2">Ver detalhes do projeto <i class="fa-solid fa-arrow-right"></i></button>
                             </div>
@@ -1228,18 +1228,19 @@
                                 
                                 <!-- Slide 1: Salas de Treinamento (Álbum Onboarding) -->
                                 <div class="min-w-full flex flex-col lg:flex-row items-center gap-8 px-2">
-                                    <div class="w-full lg:w-1/2 h-64 lg:h-80 bg-gray-100 rounded-3xl overflow-hidden relative shadow-inner">
-                                        <!-- Container do Álbum Interno (com ID para o Javascript) -->
+                                    <div class="w-full lg:w-1/2 h-64 lg:h-80 bg-gray-100 rounded-3xl overflow-hidden relative shadow-inner group/album">
+                                        <!-- Container do Álbum Interno -->
                                         <div class="inner-album" id="album-onboarding">
-                                            <!-- 1) Capa do Álbum (Aparece primeiro) -->
                                             <div class="album-item active-item bg-purple-100 flex items-center justify-center flex-col relative overflow-hidden">
                                                 <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent z-10 flex items-end p-4">
                                                     <span class="text-white text-xs font-black uppercase tracking-wider"><i class="fa-solid fa-chalkboard-user mr-2 text-vibrantOrange"></i> Salas de Treinamento</span>
                                                 </div>
                                                 <div class="text-softLilac text-7xl opacity-40"><i class="fa-solid fa-users-viewfinder"></i></div>
                                             </div>
-                                            <!-- As imagens numeradas (1.jpg, 2.jpg...) serão geradas via Javascript -->
                                         </div>
+                                        <!-- Botões de controle interno das fotos -->
+                                        <button onclick="prevAlbumPhoto('album-onboarding')" class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black text-white rounded-full flex items-center justify-center transition-all opacity-0 group-hover/album:opacity-100 z-20 text-xs"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <button onclick="nextAlbumPhoto('album-onboarding')" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black text-white rounded-full flex items-center justify-center transition-all opacity-0 group-hover/album:opacity-100 z-20 text-xs"><i class="fa-solid fa-chevron-right"></i></button>
                                     </div>
                                     <div class="w-full lg:w-1/2 space-y-4">
                                         <span class="text-[10px] font-black text-softLilac uppercase tracking-widest block"><i class="fa-solid fa-chalkboard-user mr-1"></i> Salas de Treinamento</span>
@@ -1255,18 +1256,19 @@
 
                                 <!-- Slide 2: Workshops de Liderança (Álbum Workshop) -->
                                 <div class="min-w-full flex flex-col lg:flex-row items-center gap-8 px-2">
-                                    <div class="w-full lg:w-1/2 h-64 lg:h-80 bg-gray-100 rounded-3xl overflow-hidden relative shadow-inner">
-                                        <!-- Container do Álbum Interno (com ID para o Javascript) -->
+                                    <div class="w-full lg:w-1/2 h-64 lg:h-80 bg-gray-100 rounded-3xl overflow-hidden relative shadow-inner group/album">
+                                        <!-- Container do Álbum Interno -->
                                         <div class="inner-album" id="album-workshop">
-                                            <!-- 1) Capa do Álbum (Aparece primeiro) -->
                                             <div class="album-item active-item bg-orange-100 flex items-center justify-center flex-col relative overflow-hidden">
                                                 <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent z-10 flex items-end p-4">
                                                     <span class="text-white text-xs font-black uppercase tracking-wider"><i class="fa-solid fa-lightbulb mr-2 text-vibrantOrange"></i> Workshops de Liderança</span>
                                                 </div>
                                                 <div class="text-vibrantOrange text-7xl opacity-40"><i class="fa-solid fa-handshake-angle"></i></div>
                                             </div>
-                                            <!-- As imagens numeradas (1.jpg, 2.jpg...) serão geradas via Javascript -->
                                         </div>
+                                        <!-- Botões de controle interno das fotos -->
+                                        <button onclick="prevAlbumPhoto('album-workshop')" class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black text-white rounded-full flex items-center justify-center transition-all opacity-0 group-hover/album:opacity-100 z-20 text-xs"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <button onclick="nextAlbumPhoto('album-workshop')" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black text-white rounded-full flex items-center justify-center transition-all opacity-0 group-hover/album:opacity-100 z-20 text-xs"><i class="fa-solid fa-chevron-right"></i></button>
                                     </div>
                                     <div class="w-full lg:w-1/2 space-y-4">
                                         <span class="text-[10px] font-black text-vibrantOrange uppercase tracking-widest block"><i class="fa-solid fa-lightbulb mr-1"></i> Workshops de Liderança</span>
@@ -1282,18 +1284,19 @@
 
                                 <!-- Slide 3: Rotas no PDV (Álbum Em Campo) -->
                                 <div class="min-w-full flex flex-col lg:flex-row items-center gap-8 px-2">
-                                    <div class="w-full lg:w-1/2 h-64 lg:h-80 bg-gray-100 rounded-3xl overflow-hidden relative shadow-inner">
-                                        <!-- Container do Álbum Interno (com ID para o Javascript) -->
+                                    <div class="w-full lg:w-1/2 h-64 lg:h-80 bg-gray-100 rounded-3xl overflow-hidden relative shadow-inner group/album">
+                                        <!-- Container do Álbum Interno -->
                                         <div class="inner-album" id="album-emcampo">
-                                            <!-- 1) Capa do Álbum (Aparece primeiro) -->
                                             <div class="album-item active-item bg-blue-100 flex items-center justify-center flex-col relative overflow-hidden">
                                                 <div class="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent z-10 flex items-end p-4">
                                                     <span class="text-white text-xs font-black uppercase tracking-wider"><i class="fa-solid fa-store mr-2 text-brandBlue"></i> Rotas no PDV</span>
                                                 </div>
                                                 <div class="text-brandBlue text-7xl opacity-40"><i class="fa-solid fa-route"></i></div>
                                             </div>
-                                            <!-- As imagens numeradas (1.jpg, 2.jpg...) serão geradas via Javascript -->
                                         </div>
+                                        <!-- Botões de controle interno das fotos -->
+                                        <button onclick="prevAlbumPhoto('album-emcampo')" class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black text-white rounded-full flex items-center justify-center transition-all opacity-0 group-hover/album:opacity-100 z-20 text-xs"><i class="fa-solid fa-chevron-left"></i></button>
+                                        <button onclick="nextAlbumPhoto('album-emcampo')" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black text-white rounded-full flex items-center justify-center transition-all opacity-0 group-hover/album:opacity-100 z-20 text-xs"><i class="fa-solid fa-chevron-right"></i></button>
                                     </div>
                                     <div class="w-full lg:w-1/2 space-y-4">
                                         <span class="text-[10px] font-black text-brandBlue uppercase tracking-widest block"><i class="fa-solid fa-store mr-1"></i> Rotas no PDV</span>
@@ -1309,7 +1312,7 @@
 
                             </div>
 
-                            <!-- Botões de Navegação Manual -->
+                            <!-- Botões de Navegação Manual do Carrossel Principal -->
                             <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 bg-white/90 hover:bg-white text-charcoal shadow-lg rounded-full flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 hover:scale-110 z-20">
                                 <i class="fa-solid fa-chevron-left text-sm"></i>
                             </button>
@@ -1668,7 +1671,7 @@
             });
         }
 
-        // 1) SCRIPT DO CARROSSEL PRINCIPAL (Alterna os temas a cada 6s)
+        // 1) SCRIPT DO CARROSSEL PRINCIPAL (Alterna os temas principais a cada 6s)
         let currentIndex = 0;
         const totalSlides = 3;
         let slideInterval;
@@ -1705,7 +1708,7 @@
         }
 
         function startTimer() {
-            slideInterval = setInterval(nextSlide, 6000); // 6 segundos por tema
+            slideInterval = setInterval(nextSlide, 6000);
         }
 
         function resetTimer() {
@@ -1713,54 +1716,89 @@
             startTimer();
         }
 
-        // 2) SCRIPT DOS ÁLBUNS DE FOTOS INTERNOS (Alterna as fotos a cada 3,5s)
+        // Armazena os temporizadores individuais de cada álbum de fotos interno
+        let albumIntervals = {};
+
+        // 2) SCRIPT DOS ÁLBUNS DE FOTOS INTERNOS (Passa mais rápido: 2,5 segundos)
         function startInnerAlbums() {
-            setInterval(() => {
-                document.querySelectorAll('.inner-album').forEach(album => {
-                    const items = album.querySelectorAll('.album-item');
-                    if(items.length <= 1) return; // Se tiver só a capa, não faz nada
-                    
-                    let activeIdx = Array.from(items).findIndex(item => item.classList.contains('active-item'));
-                    if(activeIdx === -1) activeIdx = 0; // Prevenção de erro
-                    
-                    // Esconde a atual
-                    items[activeIdx].classList.remove('active-item');
-                    
-                    // Próxima foto
-                    let nextIdx = (activeIdx + 1) % items.length;
-                    items[nextIdx].classList.add('active-item');
-                });
-            }, 3500); // 3,5 segundos por foto do álbum
+            const albuns = ['album-onboarding', 'album-workshop', 'album-emcampo'];
+            
+            albuns.forEach(albumId => {
+                // Intervalo automático a cada 2,5s
+                albumIntervals[albumId] = setInterval(() => {
+                    navigateAlbum(albumId, 1);
+                }, 2500);
+            });
         }
 
-        // 3) SCRIPT PARA CARREGAR FOTOS AUTOMATICAMENTE DAS PASTAS
+        // Função para avançar ou voltar manualmente as fotos DENTRO de um álbum
+        function nextAlbumPhoto(albumId) {
+            resetAlbumTimer(albumId);
+            navigateAlbum(albumId, 1);
+        }
+
+        function prevAlbumPhoto(albumId) {
+            resetAlbumTimer(albumId);
+            navigateAlbum(albumId, -1);
+        }
+
+        function resetAlbumTimer(albumId) {
+            if (albumIntervals[albumId]) {
+                clearInterval(albumIntervals[albumId]);
+            }
+            albumIntervals[albumId] = setInterval(() => {
+                navigateAlbum(albumId, 1);
+            }, 2500);
+        }
+
+        function navigateAlbum(albumId, direction) {
+            const album = document.getElementById(albumId);
+            if(!album) return;
+            const items = album.querySelectorAll('.album-item');
+            if(items.length <= 1) return;
+            
+            let activeIdx = Array.from(items).findIndex(item => item.classList.contains('active-item'));
+            if(activeIdx === -1) activeIdx = 0;
+            
+            items[activeIdx].classList.remove('active-item');
+            
+            let nextIdx = (activeIdx + direction + items.length) % items.length;
+            items[nextIdx].classList.add('active-item');
+        }
+
+        // 3) SCRIPT INTELIGENTE PARA CARREGAR OS FORMATOS .jpeg E .JPG AUTOMATICAMENTE
         function autoLoadAlbums() {
             const albunsConfig = [
-                { id: 'album-onboarding', folder: './images_onboarding' },
-                { id: 'album-workshop', folder: './images_workshop' },
-                { id: 'album-emcampo', folder: './images_emcampo' }
+                { id: 'album-onboarding', folder: './images_onboarding', max: 20 },
+                { id: 'album-workshop', folder: './images_workshop', max: 20 },
+                { id: 'album-emcampo', folder: './images_emcampo', max: 20 }
             ];
-
-            // Quantidade máxima de fotos que o código vai tentar carregar (pode aumentar se tiver mais fotos)
-            const maxFotos = 30; 
 
             albunsConfig.forEach(config => {
                 const albumContainer = document.getElementById(config.id);
                 if(!albumContainer) return;
 
-                for(let i = 1; i <= maxFotos; i++) {
-                    let img = document.createElement('img');
-                    // Tenta carregar fotos com extensão .jpg 
-                    img.src = `${config.folder}/${i}.jpg`;
-                    img.className = "album-item";
-                    img.alt = `Registro ${i}`;
+                for(let i = 1; i <= config.max; i++) {
+                    // Tenta carregar testando variações comuns no GitHub (.jpeg, .JPG, .jpeg maiúsculo)
+                    let exts = ['.jpeg', '.JPG', '.JPEG', '.jpg'];
                     
-                    // Se a imagem não for encontrada na pasta, remove do HTML silenciosamente
-                    img.onerror = function() {
-                        this.remove();
-                    };
-                    
-                    albumContainer.appendChild(img);
+                    exts.forEach(ext => {
+                        let img = document.createElement('img');
+                        img.src = `${config.folder}/${i}${ext}`;
+                        img.className = "album-item";
+                        img.alt = `Registro ${i}`;
+                        
+                        // O truque do carregamento inteligente: se a imagem carregar com sucesso, ela entra no álbum
+                        img.onload = function() {
+                            // Verifica se já não adicionamos essa mesma foto (evita duplicatas de extensões diferentes)
+                            albumContainer.appendChild(img);
+                        };
+                        
+                        // Se der erro em todas as extensões, o erro é ignorado silenciosamente
+                        img.onerror = function() {
+                            this.remove();
+                        };
+                    });
                 }
             });
         }
@@ -1769,12 +1807,11 @@
         window.addEventListener('DOMContentLoaded', () => {
             updateCarousel();
             startTimer();
-            autoLoadAlbums(); // Carrega as fotos numeradas (1.jpg, 2.jpg...)
-            startInnerAlbums(); // Inicia as fotos dos álbuns
+            autoLoadAlbums(); 
+            startInnerAlbums(); 
             
             const container = document.getElementById('carousel-container');
             if (container) {
-                // Pausa o carrossel de TEMAS quando passa o mouse (as fotos dentro continuam rodando)
                 container.addEventListener('mouseenter', () => clearInterval(slideInterval));
                 container.addEventListener('mouseleave', () => startTimer());
             }
